@@ -1,5 +1,9 @@
+<html>
+<head>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="js/like-dislike.js"></script>
+</head>
+<body>
 <div id="demo">
   <button class="like">Like 
     <span class="likes">0</span>
@@ -21,3 +25,5 @@ $('#demo').likeDislike({
   
 });
 	</script>
+	</body>
+</html>
