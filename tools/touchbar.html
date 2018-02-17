@@ -82,7 +82,7 @@
 			<div class="file">
 				<label class="file-label">
 					<input class="file-input" type="file" name="resume">
-					<a href="" download>
+					<a href="../TouchBarApp" download>
 						<span class="file-cta">
 							<span class="file-icon">
 								<i class="fa fa-download"></i>
@@ -100,95 +100,5 @@
 		<footer  w3-include-html="footer.html" id="footer" class="footer">
 
 		</footer>
-
-
 	</body>
-	<script>
-		var arr = []; // empty array
-
-		// For DYLAN DONT TOUCH window.onload = function a() {
-		//	document.getElementById("menu").innerHTML = "Enter a phrase!";
-		//}
-		function remove(){
-			var removee = document.getElementById("phraseRandomOutput").innerHTML;
-			removeA(arr,parseInt(removee));
-		}
-		function removeA(array, element) {
-			const index = array.indexOf(element);
-			array.splice((index +1), 1);
-			console.log(arr)
-		}
-
-		function addPhrase(phrase) {
-
-			var enterkey = event.key;
-
-			if(enterkey == "Enter") {
-
-				var phrase = document.getElementById("phraseInput").value;
-
-				if(phrase == ""){
-
-					document.getElementById("phraseInput").classList.add("is-danger");
-					document.getElementById("phraseInput").classList.remove("is-success");
-					document.getElementById("phraseInput").placeholder = "Enter a phrase!";
-
-
-
-				} else { 
-					document.getElementById("phraseInput").classList.add("is-success");
-					document.getElementById("phraseInput").classList.remove("is-danger");
-					document.getElementById("phraseInput").placeholder = "Enter text, then press enter."
-
-
-
-					arr.push(phrase);
-					var phraseList = "";
-
-					for (var i = 0; i < arr.length; i++) {
-						// Add it to the data string (each record will be separated by a space)
-						phraseList = phraseList + arr[i] + ', ';
-					}
-
-					document.getElementById("phraseOutput").innerHTML = "Phrases: " + phraseList;
-					document.getElementById("phraseTotalNumberOutput").innerHTML = "Total Phrases: " + i;
-					document.getElementById("phraseInput").value = "";
-				}
-			}
-
-		}
-
-		function random(){
-			arr = shuffle(arr);
-
-
-			function shuffle(array) {
-
-				var currentIndex = array.length, temporaryValue, randomIndex;
-
-				// While there remain elements to shuffle...
-				while (0 !== currentIndex) {
-
-					// Pick a remaining element...
-					randomIndex = Math.floor(Math.random() * currentIndex);
-					currentIndex -= 1;
-
-					// And swap it with the current element.
-					temporaryValue = array[currentIndex];
-					array[currentIndex] = array[randomIndex];
-					array[randomIndex] = temporaryValue;
-				}
-
-				return array;
-
-
-			}
-			// displays the phrase
-			if(arr[0] == undefined){
-				document.getElementById("phraseRandomOutput").innerHTML = "Enter some text!";
-			} else {
-				document.getElementById("phraseRandomOutput").innerHTML = "Picked Phrase: " + arr[0];
-			}
-		}
-	</script>
 </html>
