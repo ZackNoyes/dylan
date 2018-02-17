@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<title>Dylan Games | Tic Tac Toe</title>
+
+
+		<style type="text/css">
+
+			table {
+				margin: 0 auto;
+				border-collapse: collapse;
+				font-size: 54px;
+				text-align: center;
+			}
+
+			table tr td {
+				width: 100px;
+				height: 100px;
+				border: 2px solid #333;
+				text-align: center;
+			}
+			#feedback{
+				text-align: center;
+				padding-top: 20px;
+			}
+		</style>
+
+		<script>
+
+			// Check whether it's the player's move
+			var playersMove = false;
+
+			// Define the possible cells which constitute a win
+			var winCellArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
+
+			// Fire the init method when the DOM finishes loading
+			window.onload = init;
+
+			// Define the init method
+			function init() {
+
+				var cell1 = document.getElementById("cell1");
+				cell1.onclick = function(){cellClicked("cell1")};
+
+				var cell2 = document.getElementById("cell2");
+				cell2.onclick = function(){cellClicked("cell2")};
+
+				var cell3 = document.getElementById("cell3");
+				cell3.onclick = function(){cellClicked("cell3")};
+
+				var cell4 = document.getElementById("cell4");
+				cell4.onclick = function(){cellClicked("cell4")};
+
+				var cell5 = document.getElementById("cell5");
+				cell5.onclick = function(){cellClicked("cell5")};
+
+				var cell6 = document.getElementById("cell6");
+				cell6.onclick = function(){cellClicked("cell6")};
+
+				var cell7 = document.getElementById("cell7");
+				cell7.onclick = function(){cellClicked("cell7")};
+
+				var cell8 = document.getElementById("cell8");
+				cell8.onclick = function(){cellClicked("cell8")};
+
+				var cell9 = document.getElementById("cell9");
+				cell9.onclick = function(){cellClicked("cell9")};
+
+				// Determine who makes the first move
+
+				// Generate a number between 0 and 1
+				var randomNumber = Math.floor(Math.random() * 2);
+
+				// If 0 then computer's move
+				if (randomNumber == 0) {
+
+					// Update flag
+					playersMove = false;
+					document.getElementById("feedback").innerHTML = "Computer's Turn";
+
+					// Computer's turn (after a 2 second delay...)
+					setTimeout(function(){ 
+
+						// Run the computer turn
+						//basicComputerTurn();
+						advancedComputerTurn();
+
+						// Update flag
+						playersMove = true;
+						document.getElementById("feedback").innerHTML = "Your Turn";
+
+					}, 1000);
+
+				}
+
+				// Otherwise, it's the player's move
+				else {
+
+					// Set that it's the player's move
+					playersMove = true;
+
+				}
+
+			}
+
+			// Method to run when a cell is clicked
+			function cellClicked(cellId) {
+
+				// Only permit if it's the player's move
+				if (playersMove == true) {
+
+					// Get a reference to the clicked cell
+					var cell = document.getElementById(cellId)
+
+					// Check whether there's already content in this cell
+					if (cell.innerHTML.length > 0) {
+						alert("Please select a different cell");
+					}
+
+					// Otherwise, the cell is empty
+					else {
+
+						// Add marker to cell       			
+						cell.innerHTML = "X";
+
+						// Check for win
+						if (checkForWin() == true) {	         			
+							document.getElementById("feedback").innerHTML = "PLAYER WINS";
+							document.getElementById("feedback").style.color = "red";
+							return;         			
+						}
+
+						// Check for draw
+						if (checkForDraw() == true) {
+							document.getElementById("feedback").innerHTML = "DRAW";
+							document.getElementById("feedback").style.color = "red";
+							return;
+						}
+
+						// Update flag
+						playersMove = false;
+						document.getElementById("feedback").innerHTML = "Computer's Turn";
+
+						// Computer's turn (after a 1 second delay, to make it seem like the computer is "thinking" about the next move...)
+						setTimeout(function(){ 
+
+							// Run the computer turn
+							//basicComputerTurn();
+							advancedComputerTurn();
+
+							// Check for win
+							if (checkForWin() == true) {	         			
+								document.getElementById("feedback").innerHTML = "COMPUTER WINS";
+								document.getElementById("feedback").style.color = "red";
+								return;	         			
+							}
+
+							// Check for draw
+							if (checkForDraw() == true) {
+								document.getElementById("feedback").innerHTML = "DRAW";
+								document.getElementById("feedback").style.color = "red";
+								return;
+							}
+
+							// Update flag
+							playersMove = true;
+							document.getElementById("feedback").innerHTML = "Your Turn";
+
+						}, 1000);
+
+					}
+
+				}
+
+			}
+
+
+			// Checks whether a player has won
+			function checkForWin() {
+
+				for(var i = 0; i < winCellArray.length; i++){
+					var array = winCellArray[i];
+					var winOne = document.getElementById("cell" + array[0]);
+					var winTwo = document.getElementById("cell" + array[1]);
+					var winThree = document.getElementById("cell" + array[2]);
+					if( (winOne.innerHTML == "X") && (winTwo.innerHTML == "X") && (winThree.innerHTML =="X") ){
+						return true;
+					}
+					if( (winOne.innerHTML == "O") && (winTwo.innerHTML == "O") && (winThree.innerHTML =="O") ){
+						return true;
+					}
+				}
+				// Question 3: Your code goes here
+
+			}
+
+
+			// Checks for a draw
+			function checkForDraw() {
+				var counter = 0;
+				for(var i = 1; i < 10; i++ ){
+					var cell = document.getElementById("cell" + [i]);
+					if( (cell.innerHTML == "X") || cell.innerHTML == "O"){
+						counter = counter + 1;
+					}
+					if(counter == 9){
+						return true;
+					}
+				}
+				// Question 2: Your code goes here
+
+			}
+
+
+			// The computer's turn (basic)
+			function basicComputerTurn() {
+				var random = Math.floor( (Math.random() * 9) +1);
+				var cell = document.getElementById("cell" + [random]);
+				if( (cell.innerHTML == "X") || cell.innerHTML == "O"){
+					basicComputerTurn();
+				}
+				else{
+					cell.innerHTML = "O"
+				}
+				// Question 1: Your code goes here
+
+			}
+
+			// The computer's turn (advanced)   
+			function advancedComputerTurn() {
+				var guess = "";
+				var check = false;
+				for(var i = 0; i < winCellArray.length; i++){
+					var array = winCellArray[i];
+					var winOne = document.getElementById("cell" + array[0]);
+					var winTwo = document.getElementById("cell" + array[1]);
+					var winThree = document.getElementById("cell" + array[2]);
+					if( (winOne.innerHTML == "O") && (winTwo.innerHTML == "O") && (winThree.innerHTML =="") ){
+						guess = winThree;
+						check = true;
+					}
+					if( (winOne.innerHTML == "O") && (winTwo.innerHTML == "") && (winThree.innerHTML =="O") ){
+						guess = winTwo;
+						check = true;
+					}
+					if( (winOne.innerHTML == "") && (winTwo.innerHTML == "O") && (winThree.innerHTML =="O") ){
+						guess = winOne;
+						check = true;
+					}
+				}
+				// block
+				if(check == false){
+					for(var i = 0; i < winCellArray.length; i++){
+						var arrayB = winCellArray[i];
+						var winOneB = document.getElementById("cell" + arrayB[0]);
+						var winTwoB = document.getElementById("cell" + arrayB[1]);
+						var winThreeB = document.getElementById("cell" + arrayB[2]);
+						if( (winOneB.innerHTML == "X") && (winTwoB.innerHTML == "X") && (winThreeB.innerHTML =="") ){
+							guess = winThreeB;
+							check = true;
+						}
+						if( (winOneB.innerHTML == "X") && (winTwoB.innerHTML == "") && (winThreeB.innerHTML =="X") ){
+							guess = winTwoB;
+							check = true;
+						}
+						if( (winOneB.innerHTML == "") && (winTwoB.innerHTML == "X") && (winThreeB.innerHTML =="X") ){
+							guess = winOneB;
+							check = true;
+						}
+					}
+				}
+				if(check == false){
+					var random = Math.floor( (Math.random() * 9) +1);
+					var cell = document.getElementById("cell" + [random]);
+					if( (cell.innerHTML == "X") || cell.innerHTML == "O"){
+						advancedComputerTurn();
+					}
+					else{
+						guess = cell;
+					}
+				}
+				guess.innerHTML = "O"
+				// Question 4: Your code goes here
+
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+		<!-- End Quick Menu -->
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Tic Tac Toe</h2> 
+
+			<h4 class="subtitle is-4">Play Tic Tac Toe against a computer!</h4><span class="tag">Game</span>
+
+			<br />
+			<br />
+		</section>
+
+		<table>
+
+			<tr>
+				<td id="cell1"></td>
+				<td id="cell2"></td>
+				<td id="cell3"></td>
+			</tr>
+
+			<tr>
+				<td id="cell4"></td>
+				<td id="cell5"></td>
+				<td id="cell6"></td>
+			</tr>
+
+			<tr>
+				<td id="cell7"></td>
+				<td id="cell8"></td>
+				<td id="cell9"></td>
+			</tr>
+
+		</table>
+
+		<p id="feedback">Your Turn</p>
+
+		<div w3-include-html="back.html"></div> 
+
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+	</body>
+
+</html> 

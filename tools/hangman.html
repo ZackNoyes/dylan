@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<title>Dylan Tools | Hangman</title>
+
+		<style type="text/css">
+
+			#gameBoard {    
+				margin-top: 150px;
+				text-align: center;
+				margin: 0 auto;
+				width: 100px;
+			}
+			#successAlert {
+				color: green;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#helpAlert {
+				color: red;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#win {
+				display: none;
+				width: 50%;
+				margin-left: 25%;
+			}
+			#screen{
+				position: relative;
+				height: 500px;
+				border: 1px solid #30befa;
+				border-radius: 5px;
+				margin-top: 100px;
+			}
+			#levelUp{
+				color: #20df20;
+				text-align: center;
+				margin-top: 50px;
+				display: none;
+			}
+			#stats{
+				float: right;
+				width: 20%;
+				margin-top: -550px;
+				margin-right: 50px;
+			}
+			#word{
+				text-align: center;
+				font-size: 50px;
+			}
+			#canvas{
+				border: 1px solid black;
+				margin-left: 15%;	
+			}
+			#lettersGuessed{
+				width: 60%;
+				margin-left: 20%;
+				text-align: center;
+				margin-top: -40px;
+			}
+			#deathMsg{
+				width: 80%;
+				margin-left: 10%;
+				display: none;
+				position: absolute;
+			}
+			#winMsg{
+				width: 80%;
+				margin-left: 10%;
+				display: none;
+				position: absolute;
+			}
+			#alphabet{
+				text-align: center;
+			}
+			.hidden{
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+		<img id="shark" class="hidden" src="shark.jpeg">
+		<img id="person" class="hidden" src="person.png">
+		
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+		
+		<!-- End Quick Menu -->
+		
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Hangman</h2> 
+
+			<h4 class="subtitle is-4">Play Hangman!</h4>
+
+			<span class="tag is-warning">Beta</span>
+
+			<span class="tag">Games</span>
+
+			<br />
+			<br />
+
+			<section id="setup" class="content">
+				<blockquote>
+					Welcome to my hangman game! To play simply select your difficulty then press play. Guess a letter at a time and try to guess the word. If you run out of balloons you die. Hints, Categories and Custom word lists are coming soon!
+					<br/>
+					<br/>
+					<li>Easy - Short words, 7 lives</li>
+					<li>Medium - Long words, 7 lives</li>
+					<li>Hard - Short words, 5 lives</li>
+				</blockquote>
+				<div class="field has-addons">
+					<div class="control">						
+						<div class="control">
+							<div class="select">
+								<select id="difficulty" class="is-hovered">
+									<option value="easy">Easy</option>
+									<option value="medium">Medium</option>
+									<option value="hard">Hard</option>
+								</select>
+							</div>
+						</div>
+						<br/>
+						<a href="#screen">
+							<button class="button is-info" id="readyButton" onclick="ready()">
+								Play
+							</button>
+						</a>
+					</div>
+				</div>
+			</section>
+
+
+			<section id="screen">
+				<p id="word">
+					Press Play!
+				</p>
+				<p id="lettersGuessed">
+					Guessed Letters
+				</p>
+				<article id="deathMsg" class="message is-danger">
+					<div class="message-header">
+						<p>You Lost!</p>
+						<button class="delete" aria-label="delete"></button>
+					</div>
+					<div class="message-body">
+						You died! The word was <span id="wordwas"></span>. Click anywhere to play again.
+					</div>
+				</article>
+				<article id="winMsg" class="message is-success">
+					<div class="message-header">
+						<p>You Won!</p>
+						<button class="delete" aria-label="delete"></button>
+					</div>
+					<div class="message-body">
+						Congradulations, You Won! Click anywhere to play again. If you have any feedback, please <a href="../index.html#contact">contact</a> me!
+					</div>
+				</article>
+				<canvas id="canvas" height="300px" width="400px">
+
+				</canvas>
+				<p id="alphabet">
+					a b c d e f g h i j k l m n o p q r s t u v w x y z
+				</p>
+			</section>
+			<br/>
+			<label>Guess Letter:</label>
+			<input class="input" id="input" type="text"  placeholder="e"/>
+			<br/>
+			<br/>
+
+
+		</section>
+	<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+	</body>
+
+	<script type="text/javascript">
+		var easyWordArray = ["apple","pen","sameir","banana","curry","board","table","dizzy","fizzy","jumps","can't","junk","here","milk","must","awe","roads","green","grade","year","pear","down","doing","act", "apt","movies","snake"]
+		var mediumWordArray = ["medium","pineapple","oxygen","screen","computer","painting","keyboard","cords","waves","sand","building","earthquake","payment","printer","box","stand","number","pieces","spelling","koala","kangaroo","witch"];
+		var hardWordArray = ["communism","different","although","hehehehe","important","hapiness", "ambiguous", "aggregate","accumulate","acquaintance","embezzling","aftermath", "aftermost", "afternoon", "afterpain", "aftertime", "afterward", "afterword", "awkward","haphazard","oxygen"]
+		var word = "";
+		var max = 400;
+		var min = 50;
+		var started = false;
+		function ready(){
+			choseWord();
+			started = true;
+		}
+		function choseWord(){
+			var s = document.getElementById("difficulty");
+			var difficulty = s.options[s.selectedIndex].value;
+			if(difficulty == "easy"){
+				var random = Math.floor(Math.random() * easyWordArray.length);
+				word = easyWordArray[random];
+				max = 400;
+				min = 50;
+			}
+			if(difficulty == "medium"){
+				var random = Math.floor(Math.random() * mediumWordArray.length);
+				word = mediumWordArray[random];
+				max = 400;
+				min = 50;
+			}
+			if(difficulty == "hard"){
+				var random = Math.floor(Math.random() * hardWordArray.length);
+				word = hardWordArray[random];
+				max = 350;
+				min = 100;
+			}
+			console.log(word);
+			setUp();
+		}
+		function setUp(){
+			var id = 0;
+			document.getElementById("word").innerHTML = "";
+			for(var i = 0; i < word.length; i++){
+				var para = document.createElement("span");
+				var node = document.createTextNode(" _");
+				para.appendChild(node);
+				var element = document.getElementById("word");
+				element.appendChild(para);
+				para.id = id;
+				id = id + 1;
+			}
+
+			draw();
+		}
+		document.onkeypress = function(){
+			var evt = window.event;
+			if(evt.key == "Enter"){
+				guess();
+			}
+		}
+		function guess(){
+			if(started == true){
+				var win = 0;
+				var guess = document.getElementById("input").value;
+				var answer = word.split("");
+				var guessed = document.getElementById("lettersGuessed");
+				var check = false;
+				if(guess.length == 1){
+					guessed.innerHTML = guessed.innerHTML + (guess + ",");
+					for(var i = 0; i < answer.length; i++){
+						if(guess == answer[i]){
+							document.getElementById(i).innerHTML = guess;
+							check = true;
+						}
+					}
+					if(check == false){
+						max = max - 50;
+					}
+					if(max == min){
+						document.getElementById("deathMsg").style.display = "block";
+						document.getElementById("wordwas").innerHTML = word;
+						document.addEventListener("click", close);
+					}
+					for(var i = 0; i < word.length; i++){
+						var temp = document.getElementById(i).innerHTML
+						if(temp == answer[i]){
+							win = win + 1;
+						}
+						if(win == word.length){
+							document.getElementById("winMsg").style.display = "block";
+							document.getElementById("wordwas").innerHTML = word;
+							document.addEventListener("click", close);
+						}
+					}
+				}
+				document.getElementById("input").value = "";
+				draw();
+			}
+		}
+		function close(){
+			location.reload();
+			document.removeEventListener("click", close);
+			document.getElementById("deathMsg").style.display = "none";
+		}
+		function draw(){
+			var c=document.getElementById("canvas");
+			var ctx=c.getContext("2d");
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.beginPath();
+			var colorR = 244;
+			var colorG = 66;
+			var colorB = 66;
+			for(var i = min; i < max;){
+				ctx.beginPath();
+				ctx.arc(i,35,30,0,2*Math.PI);
+				ctx.fillStyle = "rgba(" + colorR + "," +colorG + "," +colorB + "," + "0.8)";
+				ctx.strokeStyle = "rgba(" + colorR + "," +colorG + "," +colorB + "," + "0.9)";
+				ctx.fill();
+				ctx.moveTo(i,60);
+				ctx.lineTo(200,150);
+				ctx.stroke();		
+				i = i + 50;		
+				if(i == 100){
+					colorR = 255;
+					colorG = 186;
+					colorB = 0;
+				}
+				if(i == 150){
+					colorR = 21;
+					colorG = 255;
+					colorB = 0;
+				}
+				if(i == 200){
+					colorR = 0;
+					colorG = 110;
+					colorB = 255;
+				}
+				if(i == 250){
+					colorR = 21;
+					colorG = 0;
+					colorB = 255;
+				}
+				if(i == 300){
+					colorR = 148;
+					colorG = 0;
+					colorB = 255;
+				}
+				if(i == 350){
+					colorR = 255;
+					colorG = 0;
+					colorB = 220;
+				}
+			}	
+			var img = document.getElementById("shark");
+			ctx.drawImage(img,80,200);
+			var person = document.getElementById("person");
+			ctx.drawImage(person,195,150);
+		}
+	</script>
+
+</html>

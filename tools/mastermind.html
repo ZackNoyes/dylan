@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+		
+		<title>Dylan Games | Mastermind</title>
+
+		<style type="text/css">
+			#gameBoard{    
+				margin-top: 150px;
+				text-align: center;
+				margin: 0 auto;
+				width: 100px;
+			}
+			#helpText{
+				color: red;
+				font-size: 80%;
+				opacity: 0;
+			}
+			#successText{
+				color: green;
+				font-size: 80%;
+				display: none;
+			}
+			#guessHelp{
+				color: red;
+				font-size: 80%;
+				opacity: 0;
+			}
+			#win{
+				display: none;
+				width: 50%;
+				margin-left: 25%;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+		
+		<!-- End Quick Menu -->
+		
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Mastermind </h2> 
+
+			<h4 class="subtitle is-4">Play the <strong>original</strong> single player mastermind game!</h4>
+
+			<span class="tag">Game</span>
+
+			<br />
+			<br />
+
+			<blockquote class="quote" id="howToPlay">
+
+				<small>How To Play: <br/>
+					- The aim of mastermind is to find the number in the least amount of guesses. <br /> Firstly, you will enter the length of the number you want to guess. The higher the number the greater the difficulty.<br />
+					Once you have done that, start guessing. Note there are no repeating digits in any number. If your guess has a correct digit in the wrong spot
+					then the number of cows will be one. If your guess has the correct digit in the right spot the number of bulls will be one. If you need further help, <a href="https://www.wikihow.com/Play-Mastermind">Google</a>.
+
+					<br/>
+
+					<a onclick="howToPlay()">Hide</a>
+
+				</small>
+
+			</blockquote>
+
+
+			<section id="setup">
+
+				<p>
+
+					How many digits do you want the number to be? <sub>(Between 1 and 10)</sub>
+
+				</p>
+
+				<input class="input" id="digits-input" type="number" min="1" max="10" placeholder="e.g. 4"/>
+
+				<p id="helpText">
+
+					Please enter a number between 1 and 10.
+
+				</p>
+
+				<p id="successText">
+
+					Success!
+
+				</p>
+
+				<button class="button is-primary" onclick="validateGame()">
+					Start Game
+				</button>
+
+			</section>
+
+			<br/>
+			<br/>
+
+			<p>
+
+				Guess:
+
+			</p>
+
+			<input class="input" id="guess" type="number" placeholder="e.g. 4286"/>
+
+			<p id="guessHelp">
+
+				Please ensure your guess is not longer or shorter than the set digit length.
+
+			</p>
+
+			<p id="lengthDisplay">
+
+				Digits in the number: <span id="lengthNumber">Please select a length</span>.
+
+			</p>
+
+			<br/>
+
+			<button class="button is-primary" onclick="guess()">
+				Guess
+			</button>
+
+			<br/>
+			<br/>
+
+			<div>
+
+				<table class="table is-fullwidth">
+
+					<thead>
+
+						<tr>
+							<th>Guess:</th>
+							<th>Bulls:</th>
+							<th>Cows:</th>
+						</tr>
+
+					</thead>
+
+					<tbody id="tbody">
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+			<div id="win">
+
+				<div class="card">
+
+					<header class="card-header">
+
+						<p class="card-header-title">
+
+							Congratulations! You Won!
+
+						</p>
+
+					</header>
+
+					<div class="card-content">
+
+						<div class="content">
+
+							You won a <span id="digits">loading..</span> digit game! You guessed the number in <span id="guesses"></span> guesses.
+
+						</div>
+
+					</div>
+
+					<footer class="card-footer">
+
+						<a href="mastermind.html" class="card-footer-item">Play Again</a>
+
+						<a href="tools.html" class="card-footer-item">More Games</a>
+
+					</footer>
+
+				</div>
+
+			</div>
+
+		</section>
+	<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+	</body>
+
+	<script type="text/javascript">
+
+		function howToPlay(){
+			document.getElementById("howToPlay").style.display = "none";
+		}
+		var digitsInput = document.getElementById("digits-input");
+		var answer;
+		var guesses = 0;
+		function validateGame(){
+
+			var guess = document.getElementById("guess");
+
+			var count = 0;
+
+			if(digitsInput.value > 10 || digitsInput.value < 1 || digitsInput.value == null){
+
+				document.getElementById("helpText").style.opacity = "none";
+				document.getElementById("successText").style.display = "none";
+
+			} else {
+
+				document.getElementById("helpText").style.display = "none";
+				document.getElementById("successText").style.display = "block";
+				document.getElementById("setup").style.display = "none";
+				digitsInputValue = digitsInput.value;
+				document.getElementById("lengthNumber").innerHTML = digitsInputValue;
+				var nines = "";
+
+				for(var i = 0; i < digitsInputValue; i++){
+
+					nines = nines + "9";
+
+				}
+				var complete = parseInt(nines);
+
+				guess.setAttribute("max", complete);
+
+				var zeros = "1";
+
+				for(var i = 0; i < digitsInputValue - 1; i++){
+
+					zeros = zeros + "0";
+
+				}
+				var complete1 = parseInt(zeros);
+
+				guess.setAttribute("min", complete1);
+			}	
+
+			getAnswer(digitsInput.value);
+			function getAnswer(length) {
+				var tempAnswer = Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
+				if(hasRepeatingdigits(tempAnswer) == true){
+					getAnswer(digitsInput.value);
+				}
+				else{
+					console.log(tempAnswer);
+					answer = tempAnswer;
+
+				}
+			}
+
+			function hasRepeatingdigits(N) {
+				return (/([0-9]).*?\1/).test(N);
+			}  
+
+
+		}
+
+		document.onkeypress = function(){
+			var evt = window.event;
+			console.log(evt);
+			if(evt.key == "Enter"){
+				guess();
+			}
+
+		}
+		function guess(){
+			var guess = document.getElementById("guess");
+			var guessInputValue = guess.value;
+			var numbers = guessInputValue.split("");
+			var string = answer.toString()
+			var answerDigits = string.split("");
+			var bulls = 0;
+			var cows = 0;
+			var checkGuess = true;
+
+
+			if(guessInputValue.length != answerDigits.length){
+				checkGuess = false;
+				document.getElementById("guessHelp").style.opacity = 1;
+			}
+
+			if(checkGuess == true){
+				document.getElementById("guessHelp").style.opacity = 0;
+				for(var i = 0; i < numbers.length; i++){
+					var check = false;
+					for(var b = 0; b < answerDigits.length; b++){					
+						if(numbers[i] == answerDigits[b]){
+							cows = cows + 1;
+						}
+						if(check == false){
+							if(numbers[i] == answerDigits[i]){
+								var check = true;
+								bulls = bulls + 1;
+								cows = cows - 1;
+							}
+						}
+					}
+				}
+
+				guesses = guesses + 1;
+				var tbdy = document.getElementById('tbody');
+
+				var tr = document.createElement('tr');
+				tbdy.appendChild(tr);
+
+				var td1 = document.createElement('td');
+				tr.appendChild(td1);
+
+				var td2 = document.createElement('td');
+				tr.appendChild(td2);
+
+				var td3 = document.createElement('td');
+				tr.appendChild(td3);
+
+				td1.innerHTML = guessInputValue;
+				td2.innerHTML = bulls;
+				td3.innerHTML = cows;
+				if(bulls == answerDigits.length){
+					document.getElementById("win").style.display = "block";
+					document.getElementById("digits").innerHTML = answerDigits.length;
+					document.getElementById("guesses").innerHTML = guesses;
+					document.getElementById("guess").id = "pizza";
+					td1.className += "is-success";
+					td2.className += "is-success";
+					td3.className += "is-success";
+				}
+			}
+
+			guess.value = "";
+		}
+
+	</script>
+
+</html>

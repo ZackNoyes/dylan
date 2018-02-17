@@ -1,0 +1,231 @@
+	<!doctype html>
+	<html lang="en">
+
+		<head>
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'UA-110490316-1');
+			</script>
+
+			<meta charset="utf-8">
+			<script src="https://www.w3schools.com/lib/w3.js"></script>
+			<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+			<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+			<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+			<link rel="shortcut icon" href="../favicon.ico" />
+				<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+		
+			<title>Dylan Tools | Word Count Tool</title>
+
+			<style type="text/css">
+
+				#gameBoard {    
+					margin-top: 150px;
+					text-align: center;
+					margin: 0 auto;
+					width: 100px;
+				}
+				#successAlert {
+					color: green;
+					font-size: 80%;
+					visibility: hidden;
+				}
+				#helpAlert {
+					color: red;
+					font-size: 80%;
+					visibility: hidden;
+				}
+				#win {
+					display: none;
+					width: 50%;
+					margin-left: 25%;
+				}
+				#display{
+					width: 30%;
+					margin-left: 35%;
+				}
+			</style>
+
+		</head>
+
+		<body>
+
+			<header>
+
+				<nav w3-include-html="menu.html"></nav> 
+
+				<script>
+					w3.includeHTML();
+				</script>
+
+			</header>
+			<!-- Quick Menu -->
+			
+			<div id="quickviewDefault" class="quickview">
+				<header class="quickview-header">
+					<p class="title">Quick Menu</p>
+					<span class="delete" data-dismiss="quickview"></span>
+				</header>
+				<div class="quickview-body">
+					<div class="quickview-block">
+						<br/>
+						<nav w3-include-html="quickMenu.html"></nav> 
+					</div>
+				</div>
+				<footer class="quickview-footer">
+					<p>
+						This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+					</p>
+				</footer>
+			</div>
+			<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+			<!-- End Quick Menu -->
+			<section id="content" class="content">
+
+				<h2 class="subtitle is-1">Word Count</h2> 
+
+				<h4 class="subtitle is-4">An easy to use word count tool</h4>
+
+				<span class="tag is-warning">Beta</span> <span class="tag">Word Tools</span>
+
+				<br />
+				<br />
+
+				<section>
+
+					<p>
+						Enter Your Text: <sub>(Then press submit)</sub>
+					</p>
+
+					<div class="field is-horizontal">
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea id="input" class="textarea" placeholder="Enter your text."></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="field is-grouped">
+						<p class="control">
+							<a class="button is-primary" onclick="run()">
+								Submit
+							</a>
+						</p>
+						<p class="control">
+							<a class="button is-light">
+								Clear
+							</a>
+						</p>
+					</div>
+
+				</section>
+
+
+
+				<p id="successAlert">
+
+					Success!
+
+				</p>
+
+				<div id="helpAlert">
+
+					Please ensure you have done the following: 
+
+					<ul>
+						<li> You have pasted some content in the text box
+						</li>
+					</ul>
+
+				</div>
+
+				<br/>
+				<br/>
+			</section>
+			<section id="display">
+				<div class="card">
+					<header class="card-header">
+						<p class="card-header-title">
+							Stats
+						</p>
+						<a href="#" class="card-header-icon" aria-label="more options">
+							<span class="icon">
+								<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</span>
+						</a>
+					</header>
+					<div class="card-content">
+						<div class="field has-addons">
+							<div class="control">
+								<a class="button is-info is-small">
+									Words
+								</a>
+							</div>
+							<div class="control">
+								<input id="words" class="input is-small" type="text" placeholder="" readonly>
+							</div>
+						</div>
+						<div class="field has-addons ">
+							<div class="control is-small">
+								<a class="button is-info is-small">
+									Characters
+								</a>
+							</div>
+							<div class="control">
+								<input id="characteres" class="input is-small" type="text" placeholder="" readonly>
+							</div>
+						</div>
+					</div>
+					<footer class="card-footer">
+						<a href="#" class="card-footer-item">Retry</a>
+						<a href="#" class="card-footer-item">Edit</a>
+						<a href="#" class="card-footer-item">New</a>
+					</footer>
+				</div>
+			</section>
+			<div w3-include-html="back.html"></div>
+			<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+		</body>
+
+		<script type="text/javascript">
+
+
+
+			var split = [];
+
+
+			function run() {
+
+				var input = document.getElementById("input").value;
+
+				var words = input.split(" ");
+				var characters = input.split("");
+
+				if (characters.length == 0) {
+					document.getElementById("helpAlert").style.visibility = "visible";
+					document.getElementById("successAlert").style.visibility = "hidden";
+
+				} 
+				else {
+					document.getElementById("helpAlert").style.visibility = "hidden";
+					document.getElementById("successAlert").style.visibility = "visible";
+					document.getElementById("words").value = words.length;
+					document.getElementById("characteres").value = characters.length;
+
+				}
+			}
+
+		</script>
+
+	</html>

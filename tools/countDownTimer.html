@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<title>Dylan Tools | Count Down Timer</title>
+
+		<style type="text/css">
+
+			#gameBoard {    
+				margin-top: 150px;
+				text-align: center;
+				margin: 0 auto;
+				width: 100px;
+			}
+			#successAlert {
+				color: green;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#helpAlert {
+				color: red;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#win {
+				display: none;
+				width: 50%;
+				margin-left: 25%;
+			}
+
+			#flashingText {
+
+				transition: background .1s;
+
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+
+		<!-- Quick Menu -->
+				<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+		
+		<!-- End Quick Menu -->
+		
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Countdown Timer</h2> 
+
+			<h4 class="subtitle is-4">A simple JavaScript Countdown Timer</h4>
+
+			<span class="tag is-warning">Beta</span>
+
+			<span class="tag">Timer</span>
+
+			<br />
+			<br />
+
+			<section id="setup">
+
+				<p>
+					Start Time: <sub>(hh:mm:ss)</sub>
+				</p>
+
+				<div class="field has-addons">
+
+					<div class="control">
+
+						<input id="input" class="input" type="text" placeholder="Example: &quot;01:00:00&quot;">
+
+					</div>
+
+					<div class="control">
+
+						<button class="button is-info" onclick="setupTimer()">
+							Submit
+						</button>
+
+					</div>
+
+
+				</div>
+
+
+			</section>
+
+
+
+			<p id="successAlert">
+
+				Success!
+
+			</p>
+
+			<div id="helpAlert">
+
+				Please conform to the following: 
+
+				<ul>
+					<li> no letters or characters that are not ":"
+					</li>
+					<li>format "hh:mm:ss"</li>
+				</ul>
+
+			</div>
+
+			<br/>
+			<br/>
+
+			<div class="card">
+
+				<header class="card-header">
+
+					<p class=" textCenter card-header-title">
+						Timer:
+					</p>
+
+				</header>
+
+				<div id="flashingText" class="card-content">
+
+					<div class="content">
+
+						<h2 id="countdownTimer" class="center">
+							<span id="hour">00</span><sub>h</sub> <span id="minute">00</span><sub>m</sub> <span id="seconds">00</span><sub>s</sub>
+						</h2>
+
+					</div>
+
+				</div>
+
+				<footer class="card-footer">
+
+					<a href="#" id="start" class="card-footer-item" onclick="start()">Start/Play</a>
+
+					<a href="#" class="card-footer-item" onclick="pause()">Pause</a>
+
+					<a href="#" class="card-footer-item" onclick="reset()">Reset</a>
+
+				</footer>
+
+			</div>
+
+		</section>
+	<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+	</body>
+
+	<script type="text/javascript">
+
+
+
+		var split = [];
+		var color = "white";
+		var check = false;
+		var a;
+		var b;
+		var secsInputValue;
+		var minsInputValue;
+		var hrsInputValue;
+
+		function setupTimer() {
+
+			var time = document.getElementById("input").value;
+
+			split = time.split(":");
+
+			secsInputValue = split[2];
+			minsInputValue = split[1];
+			hrsInputValue = split[0];
+
+			var letters = /^[a-z0-9]+$/i; // /[^a-z0-9+]+/gi
+
+			if (split.length != 3 || (split[1] > 60 || split[2] > 60) || (split[0] == "00" && split[1] == "00" && split[2] == "00") || time.match(letters)) {
+
+				document.getElementById("helpAlert").style.visibility = "visible";
+				document.getElementById("successAlert").style.visibility = "hidden";
+
+			} else {
+
+				document.getElementById("helpAlert").style.visibility = "hidden";
+				document.getElementById("successAlert").style.visibility = "visible";
+				document.getElementById("hour").innerHTML = parseInt(split[0]);
+				document.getElementById("minute").innerHTML = parseInt(split[1]);
+				document.getElementById("seconds").innerHTML = parseInt(split[2]);
+
+			}
+
+		}
+		function start(){
+
+			if(check == false){
+				var go = setTimeout(run, 1);
+				check = true;
+			}
+		}
+		function pause(){
+			if(check == true){
+				clearInterval(a);
+				check = false;
+			}
+
+		}
+		function run(){
+			a = setInterval(second, 1000);
+		}
+
+		function second(){
+			var secondsValue = document.getElementById("seconds").innerHTML;
+			var minuteValue = document.getElementById("minute").innerHTML;
+			var hourValue = document.getElementById("hour").innerHTML;
+			if(secondsValue == 0 && minuteValue > 0){
+				secondsValue = 60;
+				minuteValue = minuteValue - 1;
+				document.getElementById("minute").innerHTML = minuteValue;
+			}
+			if( (minuteValue == 0) && (secondsValue == 0) && hourValue > 0 ){
+				console.log('test')
+				minuteValue = 59;
+				secondsValue = 60;
+				hourValue = hourValue - 1;
+				document.getElementById("hour").innerHTML = hourValue;
+				document.getElementById("minute").innerHTML = minuteValue;
+			}
+			if( (hourValue == 0) && (minuteValue == 0) && (secondsValue == 1) ){
+				clearInterval(a);
+				b = setInterval(flash, 200);
+			}
+
+
+			var now = secondsValue - 1;
+			document.getElementById("seconds").innerHTML = now;
+
+		}
+
+		function flash(){
+
+			if(color == "white"){
+				document.getElementById("flashingText").style.backgroundColor = "#FF0000";
+				color = "red";
+			}
+			else{
+				if(color == "red"){
+					document.getElementById("flashingText").style.backgroundColor = "#FFFFFF";
+					color = "white";
+				}
+			}
+
+		}
+
+		function reset(){
+			if(check == true){
+				clearInterval(a);
+				clearInterval(b);
+				check = false;
+			}
+			document.getElementById("flashingText").style.backgroundColor = "#FFFFFF";
+			document.getElementById("seconds").innerHTML = secsInputValue;
+			document.getElementById("minute").innerHTML = minsInputValue;
+			document.getElementById("hour").innerHTML = hrsInputValue;
+
+		}
+
+	</script>
+
+</html>

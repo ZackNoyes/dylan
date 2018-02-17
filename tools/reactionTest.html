@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<title>Dylan Tools | Reaction Test</title>
+
+		<style type="text/css">
+
+			#gameBoard {    
+				margin-top: 150px;
+				text-align: center;
+				margin: 0 auto;
+				width: 100px;
+			}
+			#successAlert {
+				color: green;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#helpAlert {
+				color: red;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#win {
+				display: none;
+				width: 50%;
+				margin-left: 25%;
+			}
+			#screen{
+				background-color: red;
+				height: 450px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+		<!-- End Quick Menu -->
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Reaction Test</h2> 
+
+			<h4 class="subtitle is-4">Test your reaction speed</h4>
+
+			<span class="tag is-success">New!</span>
+
+			<span class="tag">Games</span>
+
+			<br />
+			<br />
+
+			<section id="setup" class="content">
+
+				<blockquote>
+					When you are ready, press the ready button. When the screen flashes green, click on the screen.
+				</blockquote>
+
+				<div class="field has-addons">
+					<div class="control">
+
+						<button class="button is-info" id="readyButton" onclick="ready()">
+							Ready
+						</button>
+
+					</div>
+				</div>
+
+
+			</section>
+
+
+			<section id="screen">
+
+
+
+			</section>
+			<br/>
+			<div class="card">
+
+				<header class="card-header">
+
+					<p class=" textCenter card-header-title">
+						Stats
+					</p>
+
+				</header>
+
+				<div id="flashingText" class="card-content">
+
+					<div>
+						<br/>
+						<table>
+							<tr>
+								<td>Attempts: <span id="attempts">0</span></td>
+							</tr>
+							<tr>
+								<td>Reaction Time: <span id="reactionTime">0</span>s</td>
+							</tr>
+							<tr>
+								<td>Average Reaction Time <span id="aveReactionTime">0</span>s</td>
+							</tr>
+							<tr>
+								<td>Early Clicks <span id="earlyClicks">0</span></td>
+							</tr>
+
+						</table>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+		<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+	</body>
+
+	<script type="text/javascript">
+		var number;
+		var time = 0;
+		var attempts = 0;
+		var startTime;
+		var totalTime = 0;
+		var buttonPress = false;
+		var earlyClicks = 0;
+		function ready(){
+			if(buttonPress == false){
+				time = 0;
+				number = Math.floor(Math.random() *(5000-3000) + 3000);
+				countdown = setInterval(down, 100);
+				buttonPress = true;
+				document.getElementById("screen").style.backgroundColor = "red";
+			}
+		}
+		function down(){
+			document.addEventListener("click", earlyClick);
+			number = number - 100;
+			if(number < 0){
+				green();
+				clearInterval(countdown);
+				reactionTime = setInterval(counter,10);
+				startTime = Date.now();
+				document.removeEventListener("click", earlyClick);
+			}
+		}
+		function earlyClick(){
+			document.removeEventListener("click", earlyClick);
+			document.getElementById("screen").style.backgroundColor = "yellow";
+			clearInterval(countdown);
+			buttonPress = false;
+			earlyClicks = earlyClicks + 1;
+			document.getElementById("earlyClicks").innerHTML = earlyClicks;
+
+		}
+		function counter() {
+			var elapsedTime = Date.now() - startTime;
+			time = (elapsedTime / 1000).toFixed(3);
+		}
+		function green(){
+			document.getElementById("screen").style.backgroundColor = "green";
+			document.addEventListener("click", click);
+		}
+		function click(){
+			document.removeEventListener("click", click);
+			clearInterval(reactionTime);
+			document.getElementById("screen").style.backgroundColor = "red";
+			updateScores();
+		}
+		function updateScores(){
+			totalTime = totalTime + Number(time);
+			attempts = attempts + 1;
+			var ave = (totalTime / attempts);
+			document.getElementById("attempts").innerHTML = attempts;
+			document.getElementById("reactionTime").innerHTML = time;
+			document.getElementById("aveReactionTime").innerHTML = ave;
+			buttonPress = false;
+		}
+
+
+	</script>
+
+</html>

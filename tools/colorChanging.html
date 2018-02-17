@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+		
+		
+		<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<style>
+			#color{
+				padding-top: 150px;
+				margin: 0;
+				width: 100wh;
+				height: 100vh;
+				color: #fff;
+				background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+				background-size: 400% 400%;
+				-webkit-animation: Gradient 15s ease infinite;
+				-moz-animation: Gradient 15s ease infinite;
+				animation: Gradient 15s ease infinite;
+			}
+			@-webkit-keyframes Gradient {
+				0% {
+					background-position: 0% 50%
+				}
+				50% {
+					background-position: 100% 50%
+				}
+				100% {
+					background-position: 0% 50%
+				}
+			}
+
+			@-moz-keyframes Gradient {
+				0% {
+					background-position: 0% 50%
+				}
+				50% {
+					background-position: 100% 50%
+				}
+				100% {
+					background-position: 0% 50%
+				}
+			}
+
+			@keyframes Gradient {
+				0% {
+					background-position: 0% 50%
+				}
+				50% {
+					background-position: 100% 50%
+				}
+				100% {
+					background-position: 0% 50%
+				}
+			}
+		</style>
+	
+		<title>Dylan Tools | Color Changing Snippet</title>
+
+	</head>
+
+	<body>
+		<header>
+			<nav w3-include-html="menu.html"></nav> 
+			<script>
+				w3.includeHTML();
+			</script>
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+		
+		<!-- End Quick Menu -->
+		<section id="content">
+
+			<h2 class="subtitle is-1">Color Changing Elements </h2>
+			<h4 class="subtitle is-4">A Snippet By Dylan</h4>
+			<span class="tag ">Snippet</span> <span class="tag ">Tutorial</span>
+			<br>
+			<br>
+
+			<div class="content">
+				<article id="close" class="message is-info">
+					<div class="message-header">
+						<p>Note:</p>
+						<button onclick="myFunction()" class="delete" aria-label="delete" ></button>
+					</div>
+					<div class="message-body">
+						This snippet is written as a tutorial. The tutorial is made for begginers and explains everything. If you just want the code, skip to the end.
+					</div>
+				</article>
+				<h1>
+					Color Changing Elements
+				</h1>
+				<p>
+					Having a color changing element can make it stand out from the rest and wow users, its simple to do and is clean and re-useable.
+				</p>
+
+				<h2>
+					To start 
+				</h2>
+				<p>
+					We want to make the background of any div in css change color, so lets start by creating a html file and putting style tags in:
+				</p>
+				<pre>
+				<code class="language-html" data-lang="html">
+&lt;html&gt;
+	&lt;head&gt;	
+		&lt;style&gt;	
+		// we will put our code here
+		&lt;/style&gt;
+	&lt;/head&gt;
+
+	&lt;body&gt;
+
+	&lt;/body&gt;
+&lt;/html&gt;
+				</code>
+</pre>
+				<p>
+					Now we want to start to get into the css, to start lets target the body, in between the style tags,
+					<br/>
+				<pre>
+					<code>
+body{
+
+
+}
+					</code>
+					</pre>
+
+				<h3>
+					Now for the fun bit - the color changing:
+				</h3>
+				<code>
+					<pre>
+					<code>
+body{
+height: 250px;
+width: 250px;
+background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+background-size: 400% 400%;
+-webkit-animation: Gradient 15s ease infinite;
+-moz-animation: Gradient 15s ease infinite;
+animation: Gradient 15s ease infinite;
+}
+					</code>
+					</pre>
+				</code>
+				The code explained: 
+				<ul>
+					<li>background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);</li>
+					<p>
+						This sets the background colors for us, you can edit all of the values in here to be whatever you want. Note though that the -45deg is the direction the animation comes from. 
+					</p>
+					<li>background-size: 400% 400%;</li>
+					<p>
+						This makes it that the background is actually 4x the actuall size. This allows for us to animate the background and make it look like it is changing color whilst really we are just moving the background which is made up of different colors.
+					</p>
+					<li>-webkit-animation: Gradient 15s ease infinite;</li>
+					<li>-moz-animation: Gradient 15s ease infinite;</li>
+					<li>animation: Gradient 15s ease infinite;</li>
+					<p>
+						These all run the animation that makes our background move.
+					</p>
+				</ul>
+				<p>
+					Now we actually need to make the animation that makes our background move - its pretty simple just pop this into your css file:
+				</p>
+				<pre>
+				<code>
+	@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+				</code>
+				</pre>
+				<p>
+					I hope you managed to get this working! If you have any feedback, please <a href="../index.html#contact">Contact</a> me!
+				</p>
+				<h3>
+					The finished product:
+				</h3>
+			</div>
+		</section>
+		<section id="color" class="hero is-success is-fullheight">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+						Color Changing is cool!
+					</h1>
+					<h2 class="subtitle">
+						:)
+					</h2>
+				</div>
+			</div>
+		</section>
+		<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer">
+
+		</footer>
+		
+
+	</body>
+	<script>
+		
+		function myFunction(){
+			document.getElementById("close").style.display = "none";
+		}
+		</script>
+</html>

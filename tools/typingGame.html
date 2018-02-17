@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<title>Dylan Tools | Typing Game</title>
+
+		<style type="text/css">
+
+			#gameBoard {    
+				margin-top: 150px;
+				text-align: center;
+				margin: 0 auto;
+				width: 100px;
+			}
+			#successAlert {
+				color: green;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#helpAlert {
+				color: red;
+				font-size: 80%;
+				visibility: hidden;
+			}
+			#win {
+				display: none;
+				width: 50%;
+				margin-left: 25%;
+			}
+			#screen{
+				position: relative;
+				height: 600px;
+				border: 1px solid #30befa;
+				border-radius: 5px;
+			}
+			#levelUp{
+				color: #20df20;
+				text-align: center;
+				margin-top: 50px;
+				display: none;
+			}
+			#stats{
+				float: right;
+				width: 20%;
+				margin-top: -550px;
+				margin-right: 50px;
+			}
+			#deathMsg{
+				width: 60%;
+				margin-left: 20%;
+				margin-top: 50px;
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">Typing Game</h2> 
+
+			<h4 class="subtitle is-4">Test your typing skill!</h4>
+
+			<span class="tag is-warning">Beta</span>
+
+			<span class="tag">Games</span>
+
+			<br />
+			<br />
+			<!-- Quick Menu -->
+			
+			<div id="quickviewDefault" class="quickview">
+				<header class="quickview-header">
+					<p class="title">Quick Menu</p>
+					<span class="delete" data-dismiss="quickview"></span>
+				</header>
+				<div class="quickview-body">
+					<div class="quickview-block">
+						<br/>
+						<nav w3-include-html="quickMenu.html"></nav> 
+					</div>
+				</div>
+				<footer class="quickview-footer">
+					<p>
+						This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+					</p>
+				</footer>
+			</div>
+			<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+			<!-- End Quick Menu -->
+			<section id="setup" class="content">
+
+				<blockquote>
+					When you are ready, press the ready button. Type as many words as you can before time runs out!
+				</blockquote>
+
+				<div class="field has-addons">
+					<div class="control">
+
+						<a href="#screen">
+							<button class="button is-info" id="readyButton" onclick="ready()">
+								Ready
+							</button>
+						</a>
+
+					</div>
+				</div>
+
+
+			</section>
+
+
+			<section id="screen">
+
+				<h3 id="levelUp">
+					Level Up! Level : <span id="level"></span>
+				</h3>
+				<article id="deathMsg" class="message is-danger">
+					<div class="message-header">
+						<p>You Lost!</p>
+						<button class="delete" aria-label="delete"></button>
+					</div>
+					<div class="message-body">
+						You lost! You got <span id="correctE"></span> words correct and reached level <span id="levelE"></span>. To play again, close this and click ready.
+					</div>
+				</article>
+			</section>
+			<br/>
+			<label>Enter Word:</label>
+			<input class="input" id="input" type="text"  placeholder="apple"/>
+			<br/>
+			<br/>
+
+
+		</section>
+		<div id="stats" class="card">
+
+			<header class="card-header">
+
+				<p class=" textCenter card-header-title">
+					Stats
+				</p>
+
+			</header>
+
+			<div class="card-content">
+
+				<div>
+					<br/>
+					<table>
+						<tr>
+							<td>Words correct: <span id="correct">0</span></td>
+						</tr>
+						<tr>
+							<td>Lives: <span id="lives">3</span></td>
+						</tr>
+						<tr>
+							<td>Level: <span id="level">1</span></td>
+						</tr>
+						<tr>
+							<td>Best Score: <span id="best">0</span></td>
+						</tr>
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+
+	</body>
+
+	<script type="text/javascript">
+
+		var level = 0;
+		var newTimer = 3000;
+		var downTimer = 25;
+		var arr = [];
+		var id = 0;
+		var correct = 0;
+		var easyWordArray = ["apple","pen","sameir","banana","curry","board","table","dizzy","fizzy","jumps","can't","junk","here","milk","must","awe","roads","green","grade","year","pear","down","doing","act", "apt","movies","snake","medium","pineapple","oxygen","screen","computer","painting","keyboard","cords","waves","sand","building","earthquake","payment","printer","box","stand","number","pieces","spelling","koala","kangaroo","witch","tag","bag","pad","dog","puppy","bark","counter","length","ruler","school"]
+		var hardWordArray = ["communism","different","although","hehehehe","important","hapiness", "ambiguous","accumulate","acquaintance","embezzling","aftermath", "aftermost", "afternoon", "afterpain", "aftertime", "afterward", "afterword", "agelessly", "agitation", "agitative", "agreeable", "disagreeably", "estimated", "eternally","awkward","haphazard","oxygen"]
+		var lives = 3;
+		var level = 1;
+		var hardFrequency = 0.01;
+		var best = 0;
+		function ready(){
+			document.getElementById("setup").style.display = "none";
+			createWord();
+			createInterval = setInterval(createWord, newTimer);
+			moveInterval = setInterval(moveWords, downTimer);
+			var bottomInterval = setInterval(die,100);
+		}
+		function createWord(){
+			if(correct%hardFrequency == 1){
+				var random = Math.floor(Math.random() * hardWordArray.length);
+				var left = Math.floor(Math.random()*(500-0+1)+0);;
+				var para = document.createElement("p");
+				var node = document.createTextNode(hardWordArray[random]);
+			}
+			else{
+				var random = Math.floor(Math.random() * easyWordArray.length);
+				var left = Math.floor(Math.random()*(500-0+1)+0);;
+				var para = document.createElement("p");
+				var node = document.createTextNode(easyWordArray[random]);
+			}
+			para.appendChild(node);
+			var element = document.getElementById("screen");
+			element.appendChild(para);
+			para.style.position = "absolute";
+			para.id = id;
+			para.style.top = "5px";
+			para.style.left = left + "px";
+			arr.push(para);		
+			id = id + 1;
+		}
+		function moveWords(){
+			for(var i = 0; i < arr.length; i++){
+				var temp = arr[i];
+				var current = parseInt(temp.style.top);				
+				var newTop =  (current + 1);
+				temp.style.top = newTop + "px";
+			}
+		}
+		document.onkeypress = function(){
+			var evt = window.event;
+			if(evt.key == "Enter"){
+				guess();
+			}
+		}
+		function guess(){
+			var input = document.getElementById("input").value;
+			for(var i = 0; i < arr.length; i++){
+				if(input == arr[i].innerHTML){
+					var temp = arr[i];
+					temp.style.display = "none";
+					document.getElementById("input").value = "";
+					correct = correct + 1;
+					update();
+					checkLevel();
+					console.log(arr.length)
+					arr.splice(i,1);
+				}
+				else{
+					document.getElementById("input").value = "";
+				}
+			}
+		}
+		function die(){
+			for(var i = 0; i < arr.length; i++){
+				var temp = arr[i].style.top;
+				temp = temp.slice(0, -2);				
+				if(temp > 580){
+					arr[i].style.display = "none";
+					lives = lives - 1;
+					arr.splice(i,1);
+					update();
+					document.getElementById("screen").style.backgroundColor = "red";
+					setTimeout(white,100);
+					setTimeout(red, 200);
+					setTimeout(white,300);
+					setTimeout(red, 400);
+					setTimeout(white,500);
+					function white(){
+						document.getElementById("screen").style.backgroundColor = "white";
+					}
+					function red(){
+						document.getElementById("screen").style.backgroundColor = "red";
+					}
+
+				}
+			}
+		}
+		function update(){
+			document.getElementById("correct").innerHTML = correct;
+			document.getElementById("lives").innerHTML = lives;
+			document.getElementById("level").innerHTML = level;
+			console.log(level);
+			if(correct > best){
+				best = correct;
+				document.getElementById("best").innerHTML = correct;
+			}
+			if(lives == 0){
+				document.getElementById("correctE").innerHTML = correct;
+				document.getElementById("levelE").innerHTML = level;
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				for(var i = 0; i < arr.length; i++){
+					arr[i].style.display = "none";
+					document.getElementById("setup").style.display = "block";
+					document.getElementById("deathMsg").style.display = "block";
+					document.addEventListener("click", close);
+				}
+			}
+		}
+		function close(){
+			location.reload();
+			document.removeEventListener("click", close);
+			document.getElementById("deathMsg").style.display = "none";
+		}
+		function checkLevel(){
+			if(correct == 2){
+				level = 2;
+				newTimer = 1500;
+				downTimer = 20;
+				document.getElementById("levelUp").style.display = "block";	
+				setTimeout(hide, 2000);
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				ready();
+				update();
+			}
+			if(correct == 10){
+				level = 3;
+				newTimer = 1400;
+				downTimer = 19;
+				hardFrequency = 3;
+				document.getElementById("levelUp").style.display = "block";	
+				setTimeout(hide, 2000);
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				ready();
+				update();
+			}
+			if(correct == 25){
+				level = 4;
+				newTimer = 1300;
+				downTimer = 18;
+				hardFrequency = 3;
+				document.getElementById("levelUp").style.display = "block";	
+				setTimeout(hide, 2000);
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				ready();
+				update();
+			}
+			if(correct == 50){
+				level = 5;
+				newTimer = 1200;
+				downTimer = 18;
+				hardFrequency = 2;
+				document.getElementById("levelUp").style.display = "block";	
+				setTimeout(hide, 2000);
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				ready();
+				update();
+			}
+			if(correct == 75){
+				level = 5;
+				newTimer = 800;
+				downTimer = 15;
+				hardFrequency = 1;
+				document.getElementById("levelUp").style.display = "block";	
+				setTimeout(hide, 2000);
+				clearInterval(createInterval);
+				clearInterval(moveInterval);
+				ready();
+				update();
+			}
+		}
+		function hide(){
+			document.getElementById("levelUp").style.display = "none";
+		}
+	</script>
+
+</html>

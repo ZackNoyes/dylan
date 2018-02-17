@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="index.js" type="text/javascript"> </script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<title>Dylan Games| Memory Game</title>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<style>
+
+
+
+
+			/* http://www.dafont.com/pwsmallicons.font */
+			@font-face {
+				font-family: 'PWSmallIcons';
+				src: url('pw-small-icons.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+			}
+			div#game-screen table#game-grid {
+				font-size: 40px;
+				font-family: "PWSmallIcons";
+				text-align: center;
+				padding: 0;
+				margin: 0;
+				table-layout: fixed;
+			}
+
+			div#game-screen table#game-grid tr td {
+
+				border: 2px solid black;
+			}
+
+			div#game-screen table#game-grid tr td.match {
+				color: #308F00;	
+			}
+
+			div#game-screen div#score {
+				margin-top: 20px;
+				font-size: 24px;
+			}
+			#restart{
+				float: right;
+				margin-top: -35px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<header>
+
+			<nav w3-include-html="menu.html"></nav> 
+
+			<script>
+				w3.includeHTML();
+			</script>
+
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+		<!-- End Quick Menu -->
+		<section id="content" class="content">
+
+			<h2 class="subtitle is-1">The Memory Game</h2> 
+
+			<h4 class="subtitle is-4">Play a fun memory game!</h4>
+
+			<span class="tag is-warning">Beta</span>
+
+			<span class="tag">Game</span>
+
+			<br />
+			<br />
+			<div id="setup">
+				<label>Mode:</label>
+				<br/>
+				<br/>
+				<div class="field">
+					<div class="control">
+						<div class="select is-danger">
+							<select>
+								<option>Coming Soon</option>
+								<option>Easy</option>
+								<option>Medium</option>
+								<option>Hard</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="content">
+				<blockquote>
+					To start, simply click on a cell square. Try to match the symbols together to form a pair.
+				</blockquote>
+			</div>
+			<br/>
+			<br/>
+			<div id="game-screen">
+
+				<table id="game-grid">
+					<tbody>
+						<tr>
+							<td id="cell0" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell1" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell2" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell3" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell4" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell5" style="opacity: 0" onclick="clicked(this)"></td>
+						</tr>
+						<tr>
+							<td id="cell6" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell7" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell8" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell9" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell10" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell11" style="opacity: 0" onclick="clicked(this)"></td>
+						</tr>
+						<tr>
+							<td id="cell12" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell13" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell14" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell15" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell16" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell17" style="opacity: 0" onclick="clicked(this)"></td>
+						</tr>
+						<tr>
+							<td id="cell18" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell19" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell20" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell21" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell22" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell23" style="opacity: 0" onclick="clicked(this)"></td>
+						</tr>
+						<tr>
+							<td id="cell24" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell25" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell26" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell27" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell28" style="opacity: 0" onclick="clicked(this)"></td>
+							<td id="cell29" style="opacity: 0" onclick="clicked(this)"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div id="score"></div>
+
+				<button id="restart" class="button" type="button" onclick="reload()">Restart Game</button>
+
+			</div>
+
+			<div id="webfont-preload" style="opacity:0">
+				<span style="font-family: PWSmallIcons;"></span>
+			</div>
+
+		</section>
+		<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer"></footer>
+	</body>
+	<script>
+		// my global variables
+		var guesses = 0;
+		var clickedCells = [];
+		var unHiddenCount = 0;
+		var pairs = 0;
+		var gamePaused = false;
+
+		// reloads the page when you click the reload button
+		function reload(){
+			location.reload();
+		}
+
+		/* Randomisation Of The Cells */
+		// Credit: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+		// Fisher-Yates Shuffle 
+
+		function shuffle(array) {
+
+			var currentIndex = array.length, temporaryValue, randomIndex;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+
+			}
+
+			return array;
+
+		}
+
+		// The input for the shuffle
+		var arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		arr = shuffle(arr);
+
+		// Some more shuffling.
+		arr = shuffle(arr);
+		arr = shuffle(arr);
+		arr = shuffle(arr);
+
+		/* What I Do with the shuffle, I get the shuffled array,
+then I make it that I only get 15 values. Then I double the 
+values so that there are now 30 characters and there is a double
+of each of them so that they can be matched. 
+*/
+		var selectedArray = arr.slice(0, 15);
+		var finalArray = selectedArray.concat(selectedArray);
+
+		// Shuffles the array again to make sure that
+		// it is random and to fix bug.
+		var finalArray = shuffle(finalArray);
+
+		// On the load of the window, it sorts all the inner HTML out so it does it first.
+		window.onload = function(){
+			// makes sure that at the start the score is displayed.
+			document.getElementById('score').innerHTML = "Guesses: " + guesses;	
+
+			// For loop to put all the icons in the right cells.
+			for (var i = 0; i < 30; i++){
+				document.getElementById("cell"+i).innerHTML= finalArray[i];
+			}
+
+
+		}
+
+		// This function runs whenever the cells are clicked
+		function clicked(cell) {	
+			// gets the ID of the cell that was clicked
+			var Id = cell.id; 
+
+			// Gets the opacity of the of the cell that was clicked
+			var opacity = document.getElementById(Id).style.opacity;
+
+			// Checks if the game is paused - to avoid spam of 
+			// cells and makes user wait before re-guessing
+			if(gamePaused == false){
+
+				// only runs this code if the opacity
+				// of the cell that is clicked is 0. 			
+				// stops people clicking already matched cells 
+				if (opacity == "0") {
+
+					//Changes the opacity of the clicked cell so the user
+					// can see it
+					document.getElementById(Id).style.opacity = "1";						
+					var newArray = clickedCells.push(Id);
+
+					// adds the cell that is clicked to an array so 
+					// I can access it later	
+					if (clickedCells.length > 1){
+
+						// Checkes if the array's length is more
+						// than one, if it is it means 2  different cells have been
+						var firstClick = clickedCells[0];
+						var seccondClick = clickedCells[1];
+
+						// displays the seccond cell which is clicked
+						document.getElementById(seccondClick).style.opacity = "1";
+
+						// This checks if the symbols in the cells are they same
+						// if they are, it makes them green and then adds 1 to pairs.
+						if (document.getElementById(firstClick).innerHTML == document.getElementById(seccondClick).innerHTML){
+							document.getElementById(firstClick).style.color = "green";
+							document.getElementById(seccondClick).style.color = "green";
+							pairs = pairs + 1;
+						}
+
+						// Otherwise it runs this which sets gamepuased 
+						//to true to avoid spamming
+						else{
+							gamePaused = true;
+							setTimeout(hide, 1000);
+
+							// after the timeout of 1 second, it then hides the two
+							// symbols and then it turns gamepaused to false 
+							// so you can keep playing the game.
+							function hide(){
+								document.getElementById(firstClick).style.opacity = "0";
+								document.getElementById(seccondClick).style.opacity = "0";				
+								gamePaused = false;
+							}
+						}
+
+						// This re-sets the array so I can re-use it.
+						clickedCells = [];
+						// adds one to guesses so that the total is displayed
+						guesses = guesses + 1
+						// Displays the guesses
+						document.getElementById('score').innerHTML = "Guesses: " + guesses;
+					}
+				}
+			}
+			// Ends the game when there are 15 pairs and displays stats.
+			if(pairs == 15){
+				document.getElementById('score').innerHTML = "Solved in " + guesses + " guesses";
+				gamePaused = true;
+			}			
+		}
+
+
+
+	</script>
+</html>

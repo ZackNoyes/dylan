@@ -1,0 +1,10 @@
+#nav{
+	position: fixed;
+	width: 100%;
+	background-color: rgba(50, 115, 220, 0.9) !Important;
+}
+#content{
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 5%;
+}	

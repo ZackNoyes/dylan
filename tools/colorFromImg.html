@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+			
+		
+		<meta charset="utf-8">
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script src="colorFromImg.js"></script>
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<title>Dylan Tools | Color From Image</title>
+			
+		<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		
+		<style>
+			#invisible{
+				display: none;
+			}
+			#canvasContainer{
+				width: 70%;
+				margin: auto;
+				position: relative
+			}
+			#overlay{
+				opacity: 0.1;
+				background-color: black;
+				width: 600px;
+				height: 500px;
+				position: absolute;
+				top: 0;
+			}
+			#color{
+				color: black;
+			}
+			#colorBlock{
+				height: 50px;
+				width: 50px;
+			}
+			#card{
+				float: right;
+				height: 500px ;
+				width: 300px ;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<nav w3-include-html="menu.html"></nav> 
+			<script>
+				w3.includeHTML();
+			</script>
+		</header>
+		
+		<!-- Quick Menu -->
+
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+		
+		<!-- End Quick Menu -->
+		
+		<section id="content">
+
+			<h2 class="subtitle is-1">Color From an Image</h2>
+			<h4 class="subtitle is-4">A tool by Dylan</h4>
+			<span class="tag ">Image Tools</span>
+			<br>
+			<br>
+
+			<div class="content">
+				<blockquote>
+					Upload your image, then select "Select Image". After the image loads click on the part of the image
+					that you want the color of. Then go over to the panel on the left. Click on the panel on the left to pick the color
+					you want and it will display. To re-pick just exit the image and re-hover over it.
+				</blockquote>
+			</div>
+			<div class="file has-name is-fullwidth">
+				<label class="file-label">
+					<input id="files" class="file-input" type="file" name="files">
+					<span class="file-cta">
+						<span class="file-icon">
+							<i class="fa fa-upload"></i>
+						</span>
+						<span class="file-label">
+							Choose a file…
+						</span>
+					</span>
+					<span id="output" class="file-name">
+
+					</span>
+				</label>
+			</div>
+			<br/> 
+			<button class="button is-primary" onclick="selectImg()">
+				Select Image
+			</button>
+			<br>
+			<br>
+			<img id="invisible" src=""/>
+		</section>
+		<div id="canvasContainer">
+			<p id="overlay" onclick="stop()">
+
+			</p>	
+			<canvas id="canvas" width="600" height="500" ></canvas>
+
+			<div class="card" id="card">
+				<div class="card-image" onclick="zoomStop()">
+					<canvas id="zoom" width="300px" height="200px" ></canvas>
+				</div>
+				<div class="card-content">
+					<div class="media">
+						<div class="media-left">
+							<p id="colorBlock">
+
+							</p>
+						</div>
+						<div class="media-content">
+							<p id="color">
+
+							</p>
+							<p class="subtitle is-6">Color-Picker By Dylan</p>
+						</div>
+					</div>
+
+					<div class="content">
+						If you have any suggestions please contact me! <a>contact</a>. If you have any trouble using the Color From an
+						Image tool, make sure to read the instructions.
+						<br>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	<div w3-include-html="back.html"></div>
+		<footer  w3-include-html="footer.html" id="footer" class="footer">
+
+		</footer>
+
+
+	</body>
+
+</html>

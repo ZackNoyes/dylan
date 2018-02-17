@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<title>Dylan Tools| Pyramid Maker</title>
+		<link rel="shortcut icon" href="../favicon.ico" />
+			<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		 <link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+		
+		<script>
+
+
+			var text;
+			var letter;
+
+			var alredyMade = 0;
+
+			function makePyramid(){
+				var output = document.getElementById("output");
+
+				if (alredyMade == 1){
+					output.innerHTML = "";
+					alreadymade = 0;
+				}
+				var char;
+				char = document.getElementById("character").value;
+				text = char;
+				letter = char;
+
+				if(height.value < 1){
+					document.getElementById("output").innerHTML = "Please enter a number above 0";			
+					document.getElementById("height").classList.add("is-danger");
+				}
+				else if(char == ""){
+					document.getElementById("output").innerHTML = "Please enter a number above 0";			
+					document.getElementById("character").classList.add("is-danger");
+
+				}
+				else{
+					document.getElementById("character").classList.remove("is-danger");
+					document.getElementById("height").classList.remove("is-danger");
+					document.getElementById("output").innerHTML = "";
+					var count = height.value;
+
+					while (count > 0 ){
+						output.innerHTML += text + "<br>";
+						text = text + letter;
+						count = count - 1;
+
+					}
+
+				}
+
+				alredyMade = alredyMade + 1;
+
+			}
+
+			document.getElementById("output").innerHTML = "";
+
+		</script>
+
+	</head>
+
+	<body>
+		<header>
+			<nav w3-include-html="menu.html"></nav> 
+			<script>
+				w3.includeHTML();
+			</script>
+			<style>
+				#output{    
+					margin-top: 30px;
+					border: 1px solid #01CEB5;
+					padding: 50px;
+					text-align: center;
+				}
+			</style>
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+		<!-- End Quick Menu -->
+		<section id="content">
+
+			<h2 class="subtitle is-1">Pyramid Maker </h2> 
+			<h4 class="subtitle is-4">Make a cool customisable pyramid</h4>
+			<span class="tag">Fun</span>
+
+			<br/>
+			<br/>
+			<section>
+				<p>
+					Enter the character you would like to make the pyramid out of:
+				</p>
+				<input class="input" id="character" type="text" placeholder="Enter the character you would like to use to make the pyramid"  />
+				<p>
+					Enter how high you want the pyramid to be:
+				</p>
+				<input class="input" id="height" type="number" min="" placeholder="Height"  />
+			</section>
+			<br/>
+
+			<button class="button is-primary" onclick="makePyramid()">
+				Make the pyramid
+			</button>
+			<br/>
+			<div>
+
+				<p id="output">
+
+				</p>
+
+
+			</div>
+
+
+
+		</section>
+
+		<div w3-include-html="back.html"></div>
+
+		<footer  w3-include-html="footer.html" id="footer" class="footer">
+
+		</footer>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,239 @@
+.imageCredit{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.6);
+	color: white;
+	padding: 10px;
+	border-radius: 20px;
+}
+#loadingScreen{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: #42f4e2;
+	z-index: 1000;
+}
+#loadingCircle{
+	text-align: center;
+}
+hr{
+	width: 70% !important;
+	margin-left: 15% !important;
+}
+#toTop{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	text-align: center;
+	z-index: 999999999;
+}
+#pongImg{
+	height: 70%;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 15%;
+}
+#emailWarning{
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 25%;
+}
+#contact{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#masterMind{
+	animation: 2.5s ease-out 0s 1 slideInFromLeft;
+}
+
+.relative{
+	position: relative;
+}
+#buttons{
+	position: absolute;
+	bottom: 20px;
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}
+
+.paused{
+	animation-play-state: paused !Important;
+}
+
+
+@keyframes slideInFromLeft {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.footer{
+	-webkit-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+	-moz-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+	box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+}
+.tab{
+	width: 10%;
+	background-color: hsl(0, 0%, 96%);
+	margin-left: 45%;	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.whiteTab{
+	width: 10%;
+	background-color: white;
+	margin-left: 45%;	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#aboutMe {
+	border-top: 1px solid #ddd;
+}
+#aboutMe .hero-body{
+	opacity: 0;
+	animation: fadeIn 1s ease-in-out 1 forwards;
+}
+
+}
+.var{
+	color: #00b0ff;
+}
+.varName{
+	color: #00df50;
+}
+.objectColor{
+	color: #ff8800;
+}
+@media (max-width: 400px) {
+	pre{
+		position: relative;
+	}
+}
+
+pre{
+	font-size: 1.5em;
+	position: absolute;
+	min-width: 250px;
+}
+#typerwriter{
+	color: white;
+
+}
+
+/* Underline From Left */
+.hvr-underline-from-left {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	overflow: hidden;
+}
+.hvr-underline-from-left:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	right: 100%;
+	bottom: 0;
+	background: #000000;
+	height: 2px;
+	-webkit-transition-property: right;
+	transition-property: right;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+.hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+	right: 0;
+}
+
+/* navbar */
+#nav{
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	padding: 10px;
+	padding-left: 20px;
+	z-index: 999;
+}
+#nav-left a, #nav-right a{
+	margin-right: 25px;
+	color: black;
+	text-align: center;
+}
+#nav-left{
+	float: left;
+}
+#nav-right{
+	float: right;
+}
+#introduction-hero .title, #introduction-hero .subtitle{
+	color: white;
+}
+#introduction-hero{
+	margin-top: 0;
+	background: 
+		linear-gradient(
+			rgba(0, 0, 0, 0.4), 
+			rgba(0, 0, 0, 0.8)
+		),
+		url("home.jpg") no-repeat center center fixed;
+	
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+}
+.hidden{
+	display: none;
+}
+.center{
+	text-align: center;
+}
+.navbar-item{
+	color: white;
+	text-align: center ;
+}
+
+#me-img{
+	position: absolute;
+	height: 175px;
+	width: 150px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 50%;
+	background-image: url("ime.JPG");
+	background-repeat: no-repeat;
+}
+#iBuild{
+	background-color: #eee;
+	border-radius: 5px;
+	padding: 5px;
+}

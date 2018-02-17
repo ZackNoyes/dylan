@@ -1,0 +1,71 @@
+#quickviewDefault{
+	z-index: 100000000;
+}
+.quickview-body {
+    padding-left: 25px;
+}
+#quickMenuButton{
+	right: 20px;
+	bottom: 20px;
+	position: fixed;
+	z-index: 1;
+}
+#mainNav{
+ 	background-color: rgba(35, 209, 96,0.9) !important;
+	position: fixed;
+	width: 100%;
+}
+#nav{
+	background-color: rgba(35, 209, 96,0.9) !important;
+	width: 100%;
+	z-index: 1000;
+}
+.color{
+	background-color: rgb(35, 209, 96) !important;
+}
+#adLeft{
+	position: fixed;
+	margin-top: 25px;
+	margin-left: 25px;
+}
+#adRight{
+	right: 0;
+	position: absolute;
+	margin-top: 25px;
+	margin-right: 25px;
+}
+
+.textCenter{
+	text-align: center !important;
+}
+.center{
+	text-align: center !important;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+h2{	
+    margin-top: 2px;
+}
+h4{
+    margin-top: -29px;
+    text-indent: 25px;
+}
+#footer{
+    margin-top: 50px;
+    width: 100%;
+    bottom: 0;	
+}
+#home {
+    height: 100vh;
+}
+
+#content {
+    width: 550px;
+		margin: auto;
+}
+#active{
+		color: white;
+}
+
+

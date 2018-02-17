@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110490316-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-110490316-1');
+		</script>
+
+		<meta charset="utf-8">
+		<link href=" https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css" type="text/css" rel="stylesheet" /> 
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<link href="toolsUniversal.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico" />
+		<!--Bulma Extentions Links -->
+		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
+		<link rel="canonical" href="https://wikiki.github.io">
+		<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-quickview/dist/bulma-quickview.min.js"></script>
+
+
+
+
+		<title>Dylan Tools| Random Phrase Generator</title>
+
+	</head>
+
+	<body>
+		<header>
+			<nav w3-include-html="menu.html"></nav> 
+			<script>
+				w3.includeHTML();
+			</script>
+		</header>
+		<!-- Quick Menu -->
+		
+		<div id="quickviewDefault" class="quickview">
+			<header class="quickview-header">
+				<p class="title">Quick Menu</p>
+				<span class="delete" data-dismiss="quickview"></span>
+			</header>
+			<div class="quickview-body">
+				<div class="quickview-block">
+					<br/>
+					<nav w3-include-html="quickMenu.html"></nav> 
+				</div>
+			</div>
+			<footer class="quickview-footer">
+				<p>
+					This is cool eh?  <span class="delete" data-dismiss="quickview"></span>
+				</p>
+			</footer>
+		</div>
+		<button id="quickMenuButton" class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show Menu</button>
+
+		<!-- End Quick Menu -->
+
+		<section id="content">
+
+			<h2 class="subtitle is-1">Random Phrase Picker </h2>
+			<h4 class="subtitle is-4">A tool by Dylan</h4>
+			<span class="tag ">Education</span>
+			<br>
+			<br>
+
+			<div class="content">
+				<blockquote>
+					The random phrase picker can be used to randomise everything from
+					names to numbers. Just enter the text and randomise!
+				</blockquote>
+			</div>
+			<input class="input" id="phraseInput" type="text" placeholder="Enter text, then press enter."  onkeydown="addPhrase(this)"/>
+			<br/> 
+			<br>
+
+
+
+			<br/>
+			<p id="phraseOutput">
+				Phrases:					
+			</p>
+
+			<p id="phraseTotalNumberOutput">
+				Total Phrases:
+			</p>
+			<br/>
+			<br/>
+			<button id="phraseRandomButton" class="button is-primary" onclick="random()">
+				Pick a random phrase
+			</button>
+			<br>
+			<br>
+
+			<p id="phraseRandomOutput">
+				Picked Phrase:          
+			</p>
+			<br>
+			<button onclick="remove()" id="phraseRemove" class="button tooltip" data-tooltip="Click to remove the currently selected phrase">
+				Remove Phrase
+			</button>
+
+
+		</section>
+
+		<div w3-include-html="back.html"></div>
+
+		<footer  w3-include-html="footer.html" id="footer" class="footer">
+
+		</footer>
+
+
+	</body>
+	<script>
+		var arr = []; // empty array
+
+		// For DYLAN DONT TOUCH window.onload = function a() {
+		//	document.getElementById("menu").innerHTML = "Enter a phrase!";
+		//}
+		function remove(){
+			var removee = document.getElementById("phraseRandomOutput").innerHTML;
+			removeA(arr,parseInt(removee));
+		}
+		function removeA(array, element) {
+			const index = array.indexOf(element);
+			array.splice((index +1), 1);
+			console.log(arr)
+		}
+
+		function addPhrase(phrase) {
+
+			var enterkey = event.key;
+
+			if(enterkey == "Enter") {
+
+				var phrase = document.getElementById("phraseInput").value;
+
+				if(phrase == ""){
+
+					document.getElementById("phraseInput").classList.add("is-danger");
+					document.getElementById("phraseInput").classList.remove("is-success");
+					document.getElementById("phraseInput").placeholder = "Enter a phrase!";
+
+
+
+				} else { 
+					document.getElementById("phraseInput").classList.add("is-success");
+					document.getElementById("phraseInput").classList.remove("is-danger");
+					document.getElementById("phraseInput").placeholder = "Enter text, then press enter."
+
+
+
+					arr.push(phrase);
+					var phraseList = "";
+
+					for (var i = 0; i < arr.length; i++) {
+						// Add it to the data string (each record will be separated by a space)
+						phraseList = phraseList + arr[i] + ', ';
+					}
+
+					document.getElementById("phraseOutput").innerHTML = "Phrases: " + phraseList;
+					document.getElementById("phraseTotalNumberOutput").innerHTML = "Total Phrases: " + i;
+					document.getElementById("phraseInput").value = "";
+				}
+			}
+
+		}
+
+		function random(){
+			arr = shuffle(arr);
+
+
+			function shuffle(array) {
+
+				var currentIndex = array.length, temporaryValue, randomIndex;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+
+
+			}
+			// displays the phrase
+			if(arr[0] == undefined){
+				document.getElementById("phraseRandomOutput").innerHTML = "Enter some text!";
+			} else {
+				document.getElementById("phraseRandomOutput").innerHTML = "Picked Phrase: " + arr[0];
+			}
+		}
+
+
+
+
+	</script>
+</html>
