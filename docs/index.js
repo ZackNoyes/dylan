@@ -3,7 +3,7 @@ console.log(document.readyState)
 function load(){
 	console.log(document.readyState);
 	if(document.readyState === 'complete') {
-		setTimeout(bye, 500);
+		setTimeout(bye, 5000);
 	}
 	else{
 		
