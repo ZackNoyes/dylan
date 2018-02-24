@@ -1,14 +1,8 @@
 var load = setInterval(load,100);
 console.log(document.readyState)
-var counter = 0;
 function load(){
-	counter = counter + 1;
 	console.log(document.readyState);
 	if(document.readyState === 'complete') {
-		setTimeout(bye, 100);
-	}
-	console.log(counter)
-	if(counter >= 50){
 		setTimeout(bye, 100);
 	}
 	else{
