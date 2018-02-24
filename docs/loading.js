@@ -7,6 +7,7 @@ function load(){
 	if(document.readyState === 'complete') {
 		setTimeout(bye, 100);
 	}
+	console.log(counter)
 	if(counter >= 50){
 		setTimeout(bye, 100);
 	}
