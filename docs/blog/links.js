@@ -13,12 +13,13 @@ function loadjscssfile(filename, filetype){
     if (typeof fileref!="undefined")
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
- 
-loadjscssfile("myscript.js", "js") //dynamically load and add this .js file
-loadjscssfile("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css", "css") ////dynamically load and add this .css file
-loadjscssfile("loading.css", "css")
+ // css
+loadjscssfile("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css", "css")
+loadjscssfile("../loading.css", "css")
+loadjscssfile("allblog.css", "css")
 
+//js
 loadjscssfile("https://use.fontawesome.com/releases/v5.0.6/js/all.js", "js")
-loadjscssfile("loading.js", "js")
+loadjscssfile("../loading.js", "js")
 loadjscssfile("https://www.w3schools.com/lib/w3.js", "js")
 

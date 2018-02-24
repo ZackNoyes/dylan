@@ -1,18 +1,3 @@
-var load = setInterval(load,400);
-console.log(document.readyState)
-function load(){
-	console.log(document.readyState);
-	if(document.readyState === 'complete') {
-		setTimeout(bye, 5000);
-	}
-	else{
-		
-	}
-}
-function bye(){
-	document.getElementById("loadingScreen").style.display = "none"
-		clearInterval(load)
-}
 document.Onload = setInterval(menu, 250);
 function menu(){
 	var y = window.scrollY;

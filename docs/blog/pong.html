@@ -7,17 +7,10 @@
 		<title>Dylan Turner | Blog - Pong</title>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<!-- Bulma Version 0.6.0 -->
+		
 		<link rel="stylesheet" type="text/css" href="blog.css">
+		<script type="text/javascript" src="links.js"></script>
 		<link rel="stylesheet" type="text/css" href="allblog.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-		<script src="https://www.w3schools.com/lib/w3.js"></script>
-		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<!--Bulma Extentions Links -->
-		<link rel="stylesheet" href="https://wikiki.github.io/css/documentation.css?v=201801141121">
-		<link rel="canonical" href="https://wikiki.github.io">
-		<script type="text/javascript" src="https://wikiki.github.io/js/quickview.js"></script>
-	
-		<script src="allblog.js"></script>
 		<style>
 			#video{
 				width: 80%;
@@ -28,7 +21,12 @@
 		</style>
 	</head>
 	<body>
-
+		<div id="loadingScreen">
+			<div id="loadContainer">
+				<h1 id="loadtxt">Loading</h1>
+				<div id="loading"></div>
+			</div>
+		</div>
 		<div class="hero-head">
 			<header>
 				<nav w3-include-html="blogMenu.html"></nav> 
