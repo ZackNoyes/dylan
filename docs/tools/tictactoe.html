@@ -46,6 +46,9 @@
 				text-align: center;
 				padding-top: 20px;
 			}
+			#playAgain{
+				display: none;
+			}
 		</style>
 
 		<script>
@@ -182,6 +185,7 @@
 							if (checkForDraw() == true) {
 								document.getElementById("feedback").innerHTML = "DRAW";
 								document.getElementById("feedback").style.color = "red";
+								document.getElementById("playAgain").style.display = "block";
 								return;
 							}
 
@@ -376,6 +380,7 @@
 		</table>
 
 		<p id="feedback">Your Turn</p>
+		<p id="playAgain" class="button">Play Again</p>
 
 		<div w3-include-html="back.html"></div> 
 
