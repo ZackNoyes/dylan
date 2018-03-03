@@ -78,16 +78,16 @@
   width: 220px;
 }
 .desc.base {
-  background: rgba(230, 0, 98, 0.75);
+  background: rgba(255, 0, 255,0.75);
 }
 .desc.one {
-  background: rgba(252, 171, 55, 0.75);
+  background: rgba(0, 255, 0,0.75);
 }
 .desc.two {
-  background: rgba(169, 160, 50, 0.75);
+  background: rgba(0, 153, 255,0.75);
 }
 .desc.three {
-  background: rgba(83, 70, 54, 0.75);
+  background: rgba(255, 153, 0,0.75);
 }
 .desc h2 {
   margin: 165px 20px 0 20px;
