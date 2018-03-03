@@ -19,10 +19,10 @@ function emailWarning(){
 }
 document.Onload = setInterval(test, 500);
 function test(){
+	var test = document.getElementById("test");
 	var aboutMe = document.getElementById("aboutMePause");
-	var masterMind = document.getElementById("masterMind");
 	fadeIn(aboutMe);
-	fadeIn(masterMind);
+	fadeIn(test);
 }
 function fadeIn(element){	
 	var check = isScrolledIntoView(element);
@@ -38,7 +38,7 @@ function isScrolledIntoView(el) {
 	// Only completely visible elements return true:
 	// var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 	// Partially visible elements return true:
-	isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+	isVisible = (elemTop + 200) < window.innerHeight && elemBottom >= 0;
 	return isVisible;
 }
 

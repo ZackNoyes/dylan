@@ -1,3 +1,134 @@
+
+#blog{
+	margin-bottom: 150px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+/* Hexagon Tiles */
+#bkg h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 4em;
+  font-weight: 300;
+  text-align: center;
+  margin: 100px 10px 0 10px;
+}
+
+.hex_row_even {
+  display: inline-block;
+  margin: 0 auto -275px auto;
+  overflow: hidden;
+}
+
+.hex_row_odd {
+  display: inline-block;
+  margin: 0 auto -275px auto;
+  overflow: hidden;
+}
+
+#bkg .center {
+  float: left;
+  margin: 20px 10px;
+  width: 220px;
+}
+
+.hexagon {
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+  transform: rotate(120deg);
+  cursor: pointer;
+  height: 440px;
+  overflow: hidden;
+  visibility: hidden;
+  width: 220px;
+}
+
+.hex1 {
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hex2 {
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  height: 100%;
+  position: relative;
+  visibility: visible;
+  width: 100%;
+}
+
+.desc {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+  font-weight: 300;
+  height: 440px;
+  line-height: 1.5em;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  visibility: visible;
+  width: 220px;
+}
+.desc.base {
+  background: rgba(230, 0, 98, 0.75);
+}
+.desc.one {
+  background: rgba(252, 171, 55, 0.75);
+}
+.desc.two {
+  background: rgba(169, 160, 50, 0.75);
+}
+.desc.three {
+  background: rgba(83, 70, 54, 0.75);
+}
+.desc h2 {
+  margin: 165px 20px 0 20px;
+}
+.desc p {
+  font-size: .5em;
+  text-transform: lowercase;
+}
+
+/* end hexagons */
+#bkg{
+	margin-top: -100px;
+}
+#blog{
+  margin: 0 auto;
+  text-align: center;
+  width: 960px;
+  margin-bottom: 150px;
+}
+#black{
+	color: black !important;
+}
+.dark{
+	background-color: hsl(0, 0%, 21%) !important;
+	color: white;
+}
+#cool{
+	background-image: url("cool.png");
+	background-size: 50% 100%;
+	background-repeat: no-repeat;
+	background-position: right; 
+	padding-left: 100px;
+}
+#width{
+	width: 75%;
+	margin-left: 15%;
+}
+#test{
+	opacity: 0;
+	animation: fadeIn 2s ease-in-out 1 forwards;
+}
 .imageCredit{
 	position: absolute;
 	left: 0;
@@ -35,9 +166,6 @@ hr{
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-}
-#masterMind{
-	animation: 2.5s ease-out 0s 1 slideInFromLeft;
 }
 
 .relative{
@@ -97,7 +225,7 @@ hr{
 }
 #aboutMe .hero-body{
 	opacity: 0;
-	animation: fadeIn 1s ease-in-out 1 forwards;
+	animation: fadeIn 2s ease-in-out 1 forwards;
 }
 
 }
