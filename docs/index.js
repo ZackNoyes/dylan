@@ -19,10 +19,8 @@ function emailWarning(){
 }
 document.Onload = setInterval(test, 500);
 function test(){
-	var test = document.getElementById("test");
 	var aboutMe = document.getElementById("aboutMePause");
 	fadeIn(aboutMe);
-	fadeIn(test);
 }
 function fadeIn(element){	
 	var check = isScrolledIntoView(element);
