@@ -1,4 +1,7 @@
-
+#disqus_thread{
+	width: 60%;
+	margin-left: 20%;
+}
 #toTop{
 	position: fixed;
 	bottom: 20px;
