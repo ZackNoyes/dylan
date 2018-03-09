@@ -462,85 +462,62 @@
 						Contact
 					</h1>
 
-					<article class="message is-danger">
+					<article class="message is-info">
 					  <div class="message-body">
-					    <strong>Warning</strong> <br/>				   
-					    The contact form currently doesnt work as GitHub doesnt support PHP, to contact me please send me an email here:
-					    contact@dylanturner.tech
+					    <strong>Notice:</strong> <br/>				   
+					    Because this website is now hosted on Github, the contact form no longer worked as the website is now static. I now use Formspree which will re-direct you. 
 					  </div>
 					</article>
-					<!--
 					<form action="https://formspree.io/dylant.aus@gmail.com"  id="form" method="POST">
 						<input type="hidden" name="_cc" value="contact@dylanturner.tech," />
-					    <input type="text" name="name">
-					    <input type="text" name="test">
-					    <input type="hidden" name="_subject" value="New submission!" />
-					    <input type="email" name="_replyto">
-					    <textarea type="text" class="textarea" placeholder="Textarea" name="MESSAGETEST" form="form"></textarea>
-					    <input type="hidden" name="_next" value="https://dylanturner.tech#contact" />
-					    <input type="submit" value="Send">
-					</form>
-				-->
-					<div class="field">
-						<label class="label">Name</label>
-						<div class="control">
-							<input class="input" type="text" placeholder="John">
-						</div>
-					</div>
 
-					<div class="field">
-						<label class="label">Email</label>
-						<div class="control has-icons-left has-icons-right">
-							<input class="input is-danger" type="email" placeholder="Email input" value="JohnSmith@JohnSmith.com">
-							<span class="icon is-small is-left">
-								<i class="fa fa-envelope"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-warning"></i>
-							</span>
-						</div>
-						<p class="help is-danger">This email is invalid</p>
-					</div>
-
-					<div class="field">
-						<label class="label">Subject</label>
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>General</option>
-									<option>Bug</option>
-									<option>Feedback</option>
-								</select>
+						<div class="field">
+							<label class="label">Name</label>
+							<div class="control">
+								<input class="input" type="text" placeholder="John" name="name">
 							</div>
 						</div>
-					</div>
 
-					<div class="field">
-						<label class="label">Message</label>
-						<div class="control">
-							<textarea class="textarea" placeholder="Textarea"></textarea>
+						<div class="field">
+							<label class="label">Email</label>
+							<div class="control has-icons-left has-icons-right">
+								<input class="input is-danger" type="email" placeholder="Email input" value="JohnSmith@JohnSmith.com" name="_replyto">
+								<span class="icon is-small is-left">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-warning"></i>
+								</span>
+							</div>
+							<p class="help is-danger">This email is invalid</p>
 						</div>
-					</div>
 
-					<div class="field is-grouped">
-						<div class="control">
-							<button class="button is-primary" onclick="emailWarning()">Submit</button>
+						<div class="field">
+							<label class="label">Subject</label>
+							<div class="control">
+								<input class="input" type="text" placeholder="John" name="_subject">
+							</div>
 						</div>
-						<div class="control">
-							<button class="button is-text">Cancel</button>
+
+						<div class="field">
+							<label class="label">Message</label>
+							<div class="control">
+								<textarea class="textarea" placeholder="Textarea" name="Message" form="form"></textarea>
+							</div>
 						</div>
-					</div>
-					<p class="help is-danger">This email is invalid. If you are having problems and wish to contact me, try emailing me here: contact@dylanturner.tech</p>
+
+						<div class="field is-grouped">
+							<div class="control">
+								<button class="button is-info" type="submit" value="Send">Send</button>
+							</div>
+							<div class="control">
+								<button class="button is-text">Cancel</button>
+							</div>
+						</div>
+
+					    <input type="hidden" name="_next" value="https://dylanturner.tech#contact" />
+					</form>
 				</div>
-			</div>
-			<div id="emailWarning">
-				<article class="message is-danger">
-				  <div class="message-body">
-				    <strong>Warning</strong> <button class="delete" onclick="close()"></button><br/>
-				    The contact form currently doesnt work as GitHub doesnt support PHP, to contact me please send me an email here:
-				    contact@dylanturner.tech
-				  </div>
-				</article>
 			</div>
 		</section>
 		<footer class="footer">
