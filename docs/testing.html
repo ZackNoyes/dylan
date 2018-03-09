@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+	
+	<title>Contact us</title>
+<!-- define some style elements-->
+<style>
+
+
+	#form{
+				width: 70%;
+				margin-left: 15%;
+				margin-right: 15%;
+				margin-top: 2%;
+				border: 2px solid #00d4d4;
+				border-radius: 5px;
+				padding: 5%;
+			}
+			
+
+</style>	
+<!-- a helper script for vaidating the form-->
+<script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" >
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css.map" >
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css" >
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css.map" >
+		<script src="https://use.fontawesome.com/35a8e488fd.js"></script>
+		<link type="text/css" rel="stylesheet" href="../riddlepages.css"/>
+	<link type="text/css" rel="stylesheet" href="contact.css"/>
+<script type="text/javascript"> 
+			//* Clickable Menu *//
+			function myFunction() {
+				document.getElementById("myDropdown").classList.toggle("show");
+			}
+			window.onclick = function(e) {
+				if (!e.target.matches('.dropbtn, #dropbutton')) {
+					var myDropdown = document.getElementById("myDropdown");
+					if (myDropdown.classList.contains('show')) {
+						myDropdown.classList.remove('show');
+					}
+				}
+			}
+			//* End of Clickable Menu *//
+		</script>
+	</head>	
+
+
+<body>
+	
+<!-- Menu Code -->
+		<!-- Menu Code -->
+		<div class="menucontainer">
+			<a href="#home"><img id="TitleImage" src="../Riddleo.png"/></a>
+			<div class="dropdown">
+				<button class="dropbtn" onclick="myFunction()">
+					<span id="dropbutton" class="fa fa-bars" ></span>
+				</button>
+				<div class="dropdown-content" id="myDropdown">
+					<a href="">All Riddles</a>
+					<a href="">Forum</a>
+					<a href="https://riddleo.000webhostapp.com/brain-teasers.html">Brain-Teasers</a>
+					<a href="https://riddleo.000webhostapp.com/logic.html">Logic</a>
+					<a href="https://riddleo.000webhostapp.com/contact-form.html">Submit A Riddle</a>
+					<a href="https://riddleo.000webhostapp.com/detective.html">Detective</a>
+				
+				</div>
+			</div> 
+		</div>
+		<!-- End Of Menu Code -->
+		
+		<br>
+	
+<h1>Submit A Riddle</h1>
+	
+<form id="form" method="POST" name="contactform" action="contact-form-handler.php"> 
+<p>
+<label class="inputtitle" for='name'>Riddle Author (use "-" for nothing) :</label> <br>
+<input class="full" type="text" name="name" placeholder="Name">
+</p>
+<p>
+<label class="inputtitle" for='email'>Email Address:</label> <br>
+<input class="full" type="text" name="email" placeholder="yourname@something.com"> <br>
+</p>
+	<p>
+		<label class="inputtitle" for='type'>Type Of Riddle</label>
+		<br>
+		<select class="selectbutton" name="type">
+					<option value="general">General</option>
+					<option value="logic">Logic</option>
+					<option value="Troll">Troll</option>
+					<option value="Who am i">Who Am I</option>
+		</select>
+	</p>
+	<p>
+		<label class="inputtitle" for='tag'>Tags</label>
+		<br>
+		<label class="radio">
+			
+				  <input type="radio" name="easy" value="easy" >
+				  <span class="tag is-success">
+					Easy
+					<button class="delete is-small"></button>
+					</span>
+				</label>
+				<label class="radio">
+				  <input type="radio" name="medium" value="medium">
+				  <span class="tag is-warning">
+				  Medium
+				  <button class="delete is-small"></button>
+				</span>
+				</label>
+				<label class="radio">
+				  <input type="radio" name="hard" value="hard">
+				  <span class="tag is-danger">
+				  Hard
+				  <button class="delete is-small"></button>
+				  </span>
+				</label>
+	</p>
+<p>
+<label class="inputtitle" for='message'>Riddle</label> <br>
+<textarea class="fullarea" name="message"></textarea>
+</p>
+<p>
+<label class="inputtitle" for='answer'>Riddle Answer</label> <br>
+<input class="full" type="text" name="answer" placeholder="Keep it as short as possible"> <br>
+</p>
+<br>
+<input id="submit" type="submit" value="Submit"><br>
+</form>
+
+<script language="JavaScript">
+// Code for validating the form
+// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+// for details
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name"); 
+frmvalidator.addValidation("email","req","Please provide your email"); 
+frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+</script>
+<!--
+Sample code from:
+http://www.html-form-guide.com/contact-form/php-email-contact-form.html
+-->
+
+
+</body>
+</html>
