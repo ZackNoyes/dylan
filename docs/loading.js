@@ -1,3 +1,4 @@
+bye();
 var load = setInterval(load,100);
 console.log(document.readyState)
 function load(){
