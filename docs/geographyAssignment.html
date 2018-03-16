@@ -40,9 +40,16 @@
 			.VIII{
 				color: green !important;
 			}
+			.score{
+				color: red !important;
+			}
+
 			table{
 				display: block;
 		        overflow-x: auto;
+			}
+			td{
+				text-align: center !important;
 			}
 		</style>
 	</head>
@@ -168,9 +175,9 @@
 						</p>
 					</div>
 					<div class="tableWidth">
-						<h2 id="improvements" class="has-text-centered">Results</h2>
+						<h2 id="results" class="has-text-centered">Results</h2>
 						<hr>
-						<p>The results below are the raw statistics. They have been colour coded to be easily understood so that you can see which year each of the statistics has come from.
+						<p>The results below reflect the raw data that has been collected on each of the countries. You can find references to the statistics in the references at the bottom of the page. They have been colour coded to be easily understood so that you can see which year each of the statistics has come from.
 						<br>
 						<p>Key: <span class="III">2013</span>, <span class="VI">2016</span>, <span class="VII">2017</span>, <span class="VIII">2018</span>.
 						<table class="table">
@@ -340,6 +347,8 @@
 						</table>
 					</div>
 					<div class="tableWidth">
+						<h2 id="rankedResults" class="has-text-centered">Ranked Results</h2>
+						<p>The results below give each country a score out of 10 based upon the data above where 1 is the best score and 10 is the worst score. If the indicator is weighted higher, the rank is still out of 10 but the score is doubled in the final calculations. Note that in the score column the scores have already been weighted. </p>
 						<table class="table">
 						   <thead>
 						    <tr>
@@ -354,6 +363,7 @@
 						     <th>Minimum Wage ($USD)</th>
 						     <th>Employment in Services (%)</th>
 						     <th>Unemployment (%)</th>
+						     <th>Score</th>
 						    </tr>
 						   </thead>
 						   <tfoot>
@@ -369,139 +379,227 @@
 						     <th>Minimum Wage ($USD)</th>
 						     <th>Employment in Services (%)</th>
 						     <th>Unemployment (%)</th>
+						     <th>Score</th>
 						    </tr>
 						   </tfoot>
 						   <tbody>
+						   	<tr>
+					           <th>Weighting</th>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>20</td>
+					           <td>20</td>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>20</td>
+					           <th>-</th>
+					          </tr>
 						    <tr>
 						     <th>Argentina</th>
-						     <td class="III">3</td>
-						     <td class="III">3</td>
-						     <td class="VII">4</td>
-						     <td class="VII">6</td>
-						     <td class="VI">9</td>
-						     <td class="VII">6</td>
-						     <td class="VII">6</td>
-						     <td class="VI">4</td>
-						     <td class="III">5</td>
-						     <td class="VII">8</td>
+						     <td>3</td>
+						     <td>3</td>
+						     <td>4</td>
+						     <td>6</td>
+						     <td>9</td>
+						     <td>6</td>
+						     <td>6</td>
+						     <td>4</td>
+						     <td>5</td>
+						     <td>8</td>
+						     <td class="score">54</td>
 						    </tr>
 						    <tr>
 						     <th>Australia</th>
-						     <td class="III">4</td>
-						     <td class="VI">1</td>
-						     <td class="VII">3</td>
-						     <td class="VII">2</td>
-						     <td class="VIII">1</td>
-						     <td class="VII">2</td>
-						     <td class="VII">4</td>
-						     <td class="VIII">1</td>
-						     <td class="III">4</td>
-						     <td class="VII">4</td>
+						     <td>4</td>
+						     <td>1</td>
+						     <td>3</td>
+						     <td>2</td>
+						     <td>1</td>
+						     <td>2</td>
+						     <td>4</td>
+						     <td>1</td>
+						     <td>4</td>
+						     <td>4</td>
+						     <td class="score">33</td>
 						    </tr>
 						    <tr>
 						     <th>Belgium</th>
-						     <td class="III">5</td>
-						     <td class="VI">1</td>
-						     <td class="VII">8</td>
-						     <td class="VII">5</td>
-						     <td class="III">5</td>
-						     <td class="VII">4</td>
-						     <td class="VII">1</td>
-						     <td class="VIII">3</td>
-						     <td class="III">1</td>
-						     <td class="VII">7</td>
+						     <td >5</td>
+						     <td>1</td>
+						     <td>8</td>
+						     <td>5</td>
+						     <td>5</td>
+						     <td>4</td>
+						     <td>1</td>
+						     <td>3</td>
+						     <td>1</td>
+						     <td>7</td>
+						     <td class="score">55</td>
 						    </tr>
 						    <tr>
 						     <th>Canada</th>
-						     <td class="III">6</td>
-						     <td class="VI">1</td>
-						     <td class="VII">7</td>
-						     <td class="VII">3</td>
-						     <td class="VIII">1</td>
-						     <td class="VII">3</td>
-						     <td class="VII">5</td>
-						     <td class="VIII">3</td>
-						     <td class="III">2</td>
-						     <td class="VII">6</td>
+						     <td>6</td>
+						     <td>1</td>
+						     <td>7</td>
+						     <td>3</td>
+						     <td>1</td>
+						     <td>3</td>
+						     <td>5</td>
+						     <td>3</td>
+						     <td>2</td>
+						     <td>6</td>
+						     <td class="score">45</td>
 						    </tr>
 						    <tr>
 						     <th>China</th>
-						     <td class="III">7</td>
-						     <td class="VI">5</td>
-						     <td class="VII">5</td>
-						     <td class="VII">7</td>
-						     <td class="VIII">4</td>
-						     <td class="VII">7</td>
-						     <td class="VII">8</td>
-						     <td class="VIII">5</td>
-						     <td class="III">7</td>
-						     <td class="VII">3</td>
+						     <td>7</td>
+						     <td>5</td>
+						     <td>5</td>
+						     <td>7</td>
+						     <td>4</td>
+						     <td>7</td>
+						     <td>8</td>
+						     <td>5</td>
+						     <td>7</td>
+						     <td>3</td>
+						     <td class="score">72</td>
 						    </tr>
 						    <tr>
 						     <th>India</th>
-						     <td class="III">8</td>
-						     <td class="III">6</td>
-						     <td class="VII">3</td>
-						     <td class="VII">8</td>
-						     <td class="VI">7</td>
-						     <td class="VII">8</td>
-						     <td class="VII">10</td>
-						     <td class="VI">6</td>
-						     <td class="III">9</td>
-						     <td class="VII">9</td>
+						     <td>8</td>
+						     <td>6</td>
+						     <td>3</td>
+						     <td>8</td>
+						     <td>7</td>
+						     <td>8</td>
+						     <td>10</td>
+						     <td>6</td>
+						     <td>9</td>
+						     <td>9</td>
+						     <td class="score">96</td>
 						    </tr>
 						    <tr>
 						     <th>Italy</th>
-						     <td class="III">2</td>
-						     <td class="III">1</td>
-						     <td class="VII">10</td>
-						     <td class="VII">2</td>
-						     <td class="VI">8</td>
-						     <td class="VII">5</td>
-						     <td class="VII">1</td>
-						     <td class="VI">NA</td>
-						     <td class="III">6</td>
-						     <td class="VII">10</td>
+						     <td>2</td>
+						     <td>1</td>
+						     <td>10</td>
+						     <td>2</td>
+						     <td>8</td>
+						     <td>5</td>
+						     <td>1</td>
+						     <td>NA</td>
+						     <td>6</td>
+						     <td>10</td>
+						      <td class="score">63</td>
 						    </tr>
 						    <tr>
 						     <th>Kenya</th>
-						     <td class="III">9</td>
-						     <td class="III">9</td>
-						     <td class="VII">1</td>
-						     <td class="VII">9</td>
-						     <td class="VI">10</td>
-						     <td class="VII">9</td>
-						     <td class="VII">9</td>
-						     <td class="VI">7</td>
-						     <td class="III">8</td>
-						     <td class="VII">11</td>
+						     <td>9</td>
+						     <td>9</td>
+						     <td>1</td>
+						     <td>9</td>
+						     <td>10</td>
+						     <td>9</td>
+						     <td>9</td>
+						     <td>7</td>
+						     <td>8</td>
+						     <td>11</td>
+						     <td class="score">105</td>
 						    </tr>
 						    <tr>
+					           <th>Switzerland</th>
+					           <td>1</td>
+					           <td>1</td>
+					           <td>7</td>
+					           <td>1</td>
+					           <td>1</td>
+					           <td>1</td>
+					           <td>3</td>
+					           <td>NA</td>
+					           <td>2</td>
+					           <td>2</td>
+					           <td class="score">19</td>
+					          </tr>
+					          <tr>
+					           <th>Uganda</th>
+					           <td>10</td>
+					           <td>10</td>
+					           <td>9</td>
+					           <td>10</td>
+					           <td>6</td>
+					           <td>10</td>
+					           <td>7</td>
+					           <td>8</td>
+					           <td>10</td>
+					           <td>1</td>
+					           <td class="score">97</td>
+					          </tr>
+						   </tbody>
+						  </table>
+						  <br/>
+						  <p>Below is the final scores of the countries. The Adjusted score helps to compare countries that are missing data. To best compare these countries with the others fairly, the average of the scores have been compined (including weighting) and then divided to give the average score. Then the average score has been added on to the current score to make up for the missing data point.</p>
+						  <table class="table">
+						   <thead>
+						    <tr>
+						     <th>Rankings</th>
+						     <th>Argentina</th>
+						     <th>Australia</th>
+						     <th>Belgium</th>
+						     <th>Canada</th>
+						     <th>China</th>
+						     <th>India</th>
+						     <th>Italy</th>
+						     <th>Kenya</th>
 						     <th>Switzerland</th>
-						     <td class="III">1</td>
-						     <td class="III">10</td>
-						     <td class="VII">7</td>
-						     <td class="VII">1</td>
-						     <td class="VI">1</td>
-						     <td class="VII">1</td>
-						     <td class="VII">3</td>
-						     <td class="VI">NA</td>
-						     <td class="III">2</td>
-						     <td class="VII">2</td>
-						    </tr>
-						    <tr>
 						     <th>Uganda</th>
-						     <td class="III">10</td>
-						     <td class="III">10</td>
-						     <td class="VII">9</td>
-						     <td class="VII">10</td>
-						     <td class="VI">6</td>
-						     <td class="VII">10</td>
-						     <td class="VII">7</td>
-						     <td class="VI">8</td>
-						     <td class="III">10</td>
-						     <td class="VII">1</td>
 						    </tr>
+						   </thead>
+						   <tbody>
+						   	<tr>
+					           <th>Score (out of 130)</th>
+					           <td>54</td>
+					           <td>33</td>
+					           <td>55</td>
+					           <td>45</td>
+					           <td>72</td>
+					           <td>96</td>
+					           <td>63</td>
+					           <td>105</td>
+					           <td>19</td>
+					           <td>97</td>
+					          </tr>
+						    <tr>
+						    <tr>
+					           <th>Adjusted Score (%)</th>
+					           <td>54</td>
+					           <td>33</td>
+					           <td>55</td>
+					           <td>45</td>
+					           <td>72</td>
+					           <td>96</td>
+					           <td class="score">68.25</td>
+					           <td>105</td>
+					           <td class="score">20.25</td>
+					           <td>97</td>
+					          </tr>
+						    <tr>
+						    <tr>
+					           <th>Final Ranking</th>
+					           <td>4</td>
+					           <td>2</td>
+					           <td>5</td>
+					           <td>3</td>
+					           <td>7</td>
+					           <td>8</td>
+					           <td>6</td>
+					           <td>10</td>
+					           <td>1</td>
+					           <td>9</td>
+					          </tr>
+						    <tr>
 						   </tbody>
 						  </table>
 					</div>
