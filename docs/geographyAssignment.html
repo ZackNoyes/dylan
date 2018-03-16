@@ -51,6 +51,10 @@
 			td{
 				text-align: center !important;
 			}
+			iframe{
+				width: 90%;
+				margin-left: 5%;
+			}
 		</style>
 	</head>
 	<body>
@@ -101,10 +105,10 @@
 						<p class="menu-label">
 					   	  Results
 					 	</p>
-					 	<li><a>Results Table</a></li>
-					 	<li><a>Rankings</a></li>
-					 	<li><a>Heat Map</a></li>
-					    <li><a>References</a></li>
+					 	<li><a href="#results">Results Table</a></li>
+					 	<li><a href="#rankings">Rankings</a></li>
+					 	<li><a href="#map">Chloropleth Map</a></li>
+					    <li><a href="#references">References</a></li>
 					  </ul>
 					</aside>
 				</div>
@@ -347,7 +351,7 @@
 						</table>
 					</div>
 					<div class="tableWidth">
-						<h2 id="rankedResults" class="has-text-centered">Ranked Results</h2>
+						<h2 id="rankings" class="has-text-centered">Ranked Results</h2>
 						<hr/>
 						<p>The results below give each country a score out of 10 based upon the data above where 1 is the best score and 10 is the worst score. If the indicator is weighted higher, the rank is still out of 10 but the score is doubled in the final calculations. Note that in the score column the scores have already been weighted. </p>
 						<table class="table">
@@ -541,6 +545,7 @@
 						   </tbody>
 						  </table>
 						  <br/>
+						  <div class="tableWidth">
 						  <h2 id="rankedResults" class="has-text-centered">Final Results</h2>
 							<hr/>
 						  <p>Below is the final scores of the countries. The Adjusted score helps to compare countries that are missing data. To best compare these countries with the others fairly, the average of the scores have been compined (including weighting) and then divided to give the average score. Then the average score has been added on to the current score to make up for the missing data point.</p>
@@ -605,13 +610,20 @@
 						    <tr>
 						   </tbody>
 						  </table>
+						</div>
 					</div>
 					<div class="width">
-						<h2 id="rankedResults" class="has-text-centered">Choloropleth Map</h2>
+						<h2 id="map" class="has-text-centered">Choloropleth Map</h2>
 							<hr/>
-							<p>To make the results easy to visulise below is an interactive chloropleth map. Hover over the country to see its ranking.</p>
-							<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpCRaSVjFx7i-Sjjki1UV2AOVTcNjGit-USO0nHzUH2-gGZjYhhsYO1Je64tmLCFxM0D8wNGMogulf/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+							<p>To make the results easy to visulise and see the differences in geographic regions, below is an interactive chloropleth map. Hover over the country to see its ranking.</p>
+							<iframe width="799.5" height="446.7458333333334" frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpCRaSVjFx7i-Sjjki1UV2AOVTcNjGit-USO0nHzUH2-gGZjYhhsYO1Je64tmLCFxM0D8wNGMogulf/pubchart?oid=616021988&amp;format=interactive"></iframe>
 					</div>
+				</div>
+				<div class="width">
+					<h2 id="references" class="has-text-centered">References</h2>
+					<hr/>
+					<p>U.S. (2018). Argentina sets minimum wage of $572 per month. [online] Available at: https://www.reuters.com/article/us-argentina-wages/argentina-sets-minimum-wage-of-572-per-month-idUSKCN0YA31A [Accessed 4 Mar. 2018].</p>
+					<p>Cia.gov. (2018). The World Factbook — Central Intelligence Agency. [online] Available at: https://www.cia.gov/library/publications/resources/the-world-factbook/geos/ar.html [Accessed 29 Feb. 2018].</p>
 				</div>
 			</section>
 		</section>
