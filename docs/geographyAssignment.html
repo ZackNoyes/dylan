@@ -23,6 +23,11 @@
 				margin-left: 10%;
 				margin-top: 5%;
 			}
+			.tableWidth{
+				width: 96%;
+				margin-left: 2%;
+				margin-top: 5%;
+			}
 			.III{
 				color: orange !important;
 			}
@@ -34,6 +39,11 @@
 			}
 			.VIII{
 				color: green !important;
+			}
+			table{
+				display: block;
+		        overflow-x: auto;
+		        white-space: nowrap;
 			}
 		</style>
 	</head>
@@ -158,7 +168,7 @@
 							You can see the weighting at the bottom of my rankings table. Life expectancy, the population below the poverty line and unemployement have all been weighted double compared to the other indicators. They have all been weighted this way as these indicators are important and can give more information about the countries wellbeing.
 						</p>
 					</div>
-					<div class="width">
+					<div class="tableWidth">
 						<h2 id="improvements" class="has-text-centered">Results</h2>
 						<hr>
 						<br>
@@ -210,7 +220,7 @@
 						    </tr>
 						    <tr>
 						      <th>Australia</th>
-						      <td class="III">3.37</td>
+						      <td class="VIII">3.37</td>
 						      <td class="VI">100</td>
 						      <td class="VII">7.3</td>
 						      <td class="VII">82.3</td>
@@ -247,39 +257,257 @@
 						      <td class="III">76</td>
 						      <td class="VII">6.5</td>
 						    </tr>
+						    <tr>
 						    <th>China</th>
 						      <td class="III">1.49</td>
 						      <td class="VI">99.9</td>
 						      <td class="VII">7.8</td>
 						      <td class="VII">75.7</td>
-						      <td class="VIII">3.3*</td>
+						      <td class="VI">3.3*</td>
 						      <td class="VII">16,600</td>
 						      <td class="VII">52.2</td>
 						      <td class="VIII">79.25</td>
 						      <td class="III">42.4</td>
 						      <td class="VII">4</td>
 						    </tr>
-						    <th>Kenya</th>
-						      <td class="III">3.76</td>
-						      <td class="III">96.4</td>
-						      <td class="VII">7.5</td>
-						      <td class="VII">77.3</td>
-						      <td class="VI">32.2</td>
-						      <td class="VII">20,700</td>
-						      <td class="VII">60.9</td>
-						      <td class="VI">403.56</td>
-						      <td class="III">74.4</td>
-						      <td class="VII">8.1</td>
+						    <tr>
+						    <th>India</th>
+						      <td class="III">0.73</td>
+						      <td class="III">79</td>
+						      <td class="VII">7.3</td>
+						      <td class="VII">68.8</td>
+						      <td class="III">19.8</td>
+						      <td class="VII">7,200</td>
+						      <td class="VII">46.6</td>
+						      <td class="VIII">58.8</td>
+						      <td class="III">31</td>
+						      <td class="VII">8.8</td>
 						    </tr>
+						    <tr>
+						    <th>Italy</th>
+						      <td class="III">3.95</td>
+						      <td class="VI">100</td>
+						      <td class="VII">10.4</td>
+						      <td class="VII">82.3</td>
+						      <td class="III">29.9</td>
+						      <td class="VII">38,000</td>
+						      <td class="VII">73.9</td>
+						      <td class="VIII">NA</td>
+						      <td class="III">67.8</td>
+						      <td class="VII">10.8</td>
+						    </tr>
+						    <tr>
+						    <th>Kenya</th>
+						      <td class="III">0.2</td>
+						      <td class="III">20</td>
+						      <td class="VII">6.7</td>
+						      <td class="VII">64.3</td>
+						      <td class="VI">46</td>
+						      <td class="VII">35,000</td>
+						      <td class="VII">47.7</td>
+						      <td class="VIII">16.96</td>
+						      <td class="III">32.2</td>
+						      <td class="VI">11</td>
+						    </tr>
+						    <tr>
+						    <th>Switzerland</th>
+						      <td class="III">4.11</td>
+						      <td class="VI">100</td>
+						      <td class="VII">8.7</td>
+						      <td class="VII">82.6</td>
+						      <td class="VIII">0</td>
+						      <td class="VII">61,440</td>
+						      <td class="VII">73.7</td>
+						      <td class="VIII">NA</td>
+						      <td class="III">76.9</td>
+						      <td class="VII">3.1</td>
+						    </tr>
+						    <tr>
+						    <th>Uganda</th>
+						      <td class="III">0.1</td>
+						      <td class="III">15</td>
+						      <td class="VII">10.2</td>
+						      <td class="VII">55.9</td>
+						      <td class="III">19.7</td>
+						      <td class="VII">2,400</td>
+						      <td class="VII">52.3</td>
+						      <td class="VIII">1.82</td>
+						      <td class="III">23.7</td>
+						      <td class="VII">2.3</td>
+						    </tr>
+
 						  </tbody>
 						</table>
 					</div>
+					<div class="tableWidth">
+						<table class="table">
+						   <thead>
+						    <tr>
+						     <th>Country</th>
+						     <th>Physicians per 1000</th>
+						     <th>Electricity access (%)</th>
+						     <th>Death Rate / 1000</th>
+						     <th>Life Expectancy</th>
+						     <th>Pop Below Poverty Line (%)</th>
+						     <th>GDP/ Capita ($USD)</th>
+						     <th>GDP By Services</th>
+						     <th>Minimum Wage ($USD)</th>
+						     <th>Employment in Services (%)</th>
+						     <th>Unemployment (%)</th>
+						    </tr>
+						   </thead>
+						   <tfoot>
+						    <tr>
+						     <th>Country</th>
+						     <th>Physicians per 1000</th>
+						     <th>Electricity access (%)</th>
+						     <th>Death Rate / 1000</th>
+						     <th>Life Expectancy</th>
+						     <th>Pop Below Poverty Line (%)</th>
+						     <th>GDP/ Capita</th>
+						     <th>GDP By Services</th>
+						     <th>Minimum Wage ($USD)</th>
+						     <th>Employment in Services (%)</th>
+						     <th>Unemployment (%)</th>
+						    </tr>
+						   </tfoot>
+						   <tbody>
+						    <tr>
+						     <th>Argentina</th>
+						     <td class="III">3</td>
+						     <td class="III">3</td>
+						     <td class="VII">4</td>
+						     <td class="VII">6</td>
+						     <td class="VI">9</td>
+						     <td class="VII">6</td>
+						     <td class="VII">6</td>
+						     <td class="VI">4</td>
+						     <td class="III">5</td>
+						     <td class="VII">8</td>
+						    </tr>
+						    <tr>
+						     <th>Australia</th>
+						     <td class="III">4</td>
+						     <td class="VI">1</td>
+						     <td class="VII">3</td>
+						     <td class="VII">2</td>
+						     <td class="VIII">1</td>
+						     <td class="VII">2</td>
+						     <td class="VII">4</td>
+						     <td class="VIII">1</td>
+						     <td class="III">4</td>
+						     <td class="VII">4</td>
+						    </tr>
+						    <tr>
+						     <th>Belgium</th>
+						     <td class="III">5</td>
+						     <td class="VI">1</td>
+						     <td class="VII">8</td>
+						     <td class="VII">5</td>
+						     <td class="III">5</td>
+						     <td class="VII">4</td>
+						     <td class="VII">1</td>
+						     <td class="VIII">3</td>
+						     <td class="III">1</td>
+						     <td class="VII">7</td>
+						    </tr>
+						    <tr>
+						     <th>Canada</th>
+						     <td class="III">6</td>
+						     <td class="VI">1</td>
+						     <td class="VII">7</td>
+						     <td class="VII">3</td>
+						     <td class="VIII">1</td>
+						     <td class="VII">3</td>
+						     <td class="VII">5</td>
+						     <td class="VIII">3</td>
+						     <td class="III">2</td>
+						     <td class="VII">6</td>
+						    </tr>
+						    <tr>
+						     <th>China</th>
+						     <td class="III">7</td>
+						     <td class="VI">5</td>
+						     <td class="VII">5</td>
+						     <td class="VII">7</td>
+						     <td class="VIII">4</td>
+						     <td class="VII">7</td>
+						     <td class="VII">8</td>
+						     <td class="VIII">5</td>
+						     <td class="III">7</td>
+						     <td class="VII">3</td>
+						    </tr>
+						    <tr>
+						     <th>India</th>
+						     <td class="III">8</td>
+						     <td class="III">6</td>
+						     <td class="VII">3</td>
+						     <td class="VII">8</td>
+						     <td class="VI">7</td>
+						     <td class="VII">8</td>
+						     <td class="VII">10</td>
+						     <td class="VI">6</td>
+						     <td class="III">9</td>
+						     <td class="VII">9</td>
+						    </tr>
+						    <tr>
+						     <th>Italy</th>
+						     <td class="III">2</td>
+						     <td class="III">1</td>
+						     <td class="VII">10</td>
+						     <td class="VII">2</td>
+						     <td class="VI">8</td>
+						     <td class="VII">5</td>
+						     <td class="VII">1</td>
+						     <td class="VI">NA</td>
+						     <td class="III">6</td>
+						     <td class="VII">10</td>
+						    </tr>
+						    <tr>
+						     <th>Kenya</th>
+						     <td class="III">9</td>
+						     <td class="III">9</td>
+						     <td class="VII">1</td>
+						     <td class="VII">9</td>
+						     <td class="VI">10</td>
+						     <td class="VII">9</td>
+						     <td class="VII">9</td>
+						     <td class="VI">7</td>
+						     <td class="III">8</td>
+						     <td class="VII">11</td>
+						    </tr>
+						    <tr>
+						     <th>Switzerland</th>
+						     <td class="III">1</td>
+						     <td class="III">10</td>
+						     <td class="VII">7</td>
+						     <td class="VII">1</td>
+						     <td class="VI">1</td>
+						     <td class="VII">1</td>
+						     <td class="VII">3</td>
+						     <td class="VI">NA</td>
+						     <td class="III">2</td>
+						     <td class="VII">2</td>
+						    </tr>
+						    <tr>
+						     <th>Uganda</th>
+						     <td class="III">10</td>
+						     <td class="III">10</td>
+						     <td class="VII">9</td>
+						     <td class="VII">10</td>
+						     <td class="VI">6</td>
+						     <td class="VII">10</td>
+						     <td class="VII">7</td>
+						     <td class="VI">8</td>
+						     <td class="III">10</td>
+						     <td class="VII">1</td>
+						    </tr>
+						   </tbody>
+						  </table>
+					</div>
 				</div>
 			</section>
-
-
 		</section>
-
 		<footer class="footer">
 			<div class="container">
 				<div class="content has-text-centered">
