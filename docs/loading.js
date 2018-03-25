@@ -4,7 +4,7 @@ console.log(document.readyState)
 function load(){
 	console.log(document.readyState);
 	if(document.readyState === 'complete') {
-		setTimeout(bye, 100);
+		setTimeout(bye, 200);
 	}
 	else{
 		
