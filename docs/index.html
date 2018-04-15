@@ -30,6 +30,12 @@
 		<link rel="stylesheet" href="index.css">
 		<script type="text/javascript" src="index.js"></script>
 		
+		 <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+              <script>
+              new WOW().init();
+              </script>
 
 		<title>Dylan | Home</title>
 
@@ -59,10 +65,10 @@
 			<i class="fas fa-arrow-circle-up"></i>
 			<br/><small>To Top</small>
 		</div>
-			<section id="introduction-hero" class="hero is-fullheight scroll">
+			<section id="introduction-hero" class="hero is-fullheight fadeIn animated">
 				<div class="hero-body">
 					<div class="container">
-						<h1 class="title center">
+						<h1 class="title center animated fadeInUp">
 							Hello! I'm Dylan.
 						</h1>
 						<h2 class="subtitle center">
@@ -83,9 +89,8 @@
 					</div>
 				</div>
 			</section>
-
-		<section id="aboutMe" class="hero is-light is-fullheight scroll">
-			<div id="aboutMePause" class="hero-body paused">
+		<section id="aboutMe" class="hero is-light is-fullheight scroll wow slideInLeft" data-wow-duration="2s" data-wow-offset="250">
+			<div class="hero-body">
 				<div class="container">
 					<div class="columns">
 						<div class="column">
@@ -124,7 +129,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="hero is-dark">
+		<section class="hero is-dark wow slideInUp" data-wow-offset="50">
 			<div class="hero-body">
 			<h1 class="title has-text-centered">Blog</h1>
 			<h1 class="sub-title has-text-centered">Hover over an image</h1>
@@ -299,7 +304,7 @@
 		</section>
 		<section class="hero is-fullheight scroll">
 			<br/>
-			<h1 class="title has-text-centered">Projects</h1>
+			<h1 class="title has-text-centered wow lightSpeedIn">Projects</h1>
 			<hr/>
 			<div id="width" class="paused">
 
@@ -323,7 +328,7 @@
 				  </div>
 				</div>
 
-				<div class="tile is-ancestor ">
+				<div class="tile is-ancestor wow slideInUp" data-wow-offset="40">
 				  <div class="tile is-9 is-parent">
 				    <article class="tile is-child box">
 				      <p class="title">Tutorials</p>
@@ -345,7 +350,7 @@
 				<div class="tile is-ancestor">
 				  <div class="tile is-vertical is-9">
 				    <div class="tile">
-				      <div class="tile is-parent">
+				      <div class="tile is-parent wow slideInUp" data-wow-offset="40"">
 				        <article class="tile is-child box">
 				          <p class="title">Touch Bar App</p>
 				          <p class="subtitle">A touch bar app for Mac OS</p>
@@ -357,7 +362,7 @@
 				      </div>
 				      <div class="tile is-8 is-vertical">
 				        <div class="tile">
-				          <div class="tile is-parent">
+				          <div class="tile is-parent wow slideInUp" data-wow-offset="40"">
 				            <article class="tile is-child box">
 				              <p class="title">Typing Game!</p>
 				              <p class="subtitle">A javascript typing game</p>
@@ -367,7 +372,7 @@
 					          </div>
 				            </article>
 				          </div>
-				          <div class="tile is-parent">
+				          <div class="tile is-parent wow slideInUp" data-wow-offset="40"">
 				            <article class="tile is-child box">
 				              <p class="title">Reaction Test</p>
 				              <p class="subtitle">Test your reactions!</p>
@@ -378,7 +383,7 @@
 				            </article>
 				          </div>
 				        </div>
-				        <div class="tile is-parent">
+				        <div class="tile is-parent wow slideInUp" data-wow-offset="40"">
 				          <article class="tile is-child box">
 				            <p class="title">Mastermind</p>
 				            <p class="subtitle">A javascript game</p>
@@ -391,7 +396,7 @@
 				      </div>
 				    </div>
 				    <div class="tile">
-				      <div class="tile is-8 is-parent">
+				      <div class="tile is-8 is-parent wow slideInUp" data-wow-offset="40"">
 				        <article class="tile is-child box">
 				          <p class="title">Two Player Pacman</p>
 				          <p class="subtitle">A two player version of pacman!</p>
@@ -401,7 +406,7 @@
 				          <a href="tools/reactionTest.html"><button class="button" disabled>Play Now</button></a>
 				        </article>
 				      </div>
-				      <div class="tile is-parent">
+				      <div class="tile is-parent wow slideInUp" data-wow-offset="40"">
 				        <article class="tile is-child box">
 				          <p class="title">Transport Transfer</p>
 				          <p class="subtitle">Gov Hack 2017</p>
@@ -413,7 +418,7 @@
 				      </div>
 				    </div>
 				  </div>
-				  <div class="tile is-parent">
+				  <div class="tile is-parent wow slideInUp" data-wow-offset="40">
 				    <article class="tile is-child box">
 				      <div class="content">
 				        <p class="title">Pong!</p>
@@ -432,27 +437,27 @@
 			<br/>
 			<div class="hero-foot center">
 				<div class="tab dark">
-					Cool Stuff
+					Tutorials
 				</div>
 			</div>
 		</section>
 		<section id="cool" class="hero is-fullheight is-dark">
 			<div class="hero-body">
 				<div class="container">
-					<h1 class="title">Tutorials</h1>
+					<h1 class="title animated lightSpeedIn" data-wow-offset="40">Tutorials</h1>
 					<h2 class="subtitle">Visit my tutorials page!</h2>
 					<a href="http://tutorials.dylanturner.tech"><button class="button">View</button></a>
 				</div>
 			</div>
-				<div class="hero-foot center">
-					<div id="black" class="tab">
-						Games!
-					</div>
+			<div class="hero-foot center">
+				<div id="black" class="tab">
+					Games!
 				</div>
+			</div>
 		</section>
 		<section class="hero is-fullheight is-light scroll">
 			<div class="hero-body">
-				<div class="container">
+				<div class="container wow animated slideInUp" data-wow-offset="250">
 					<h1 class="title center">
 						Feel like playing a game?
 					</h1>
@@ -471,7 +476,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="hero is-fullheight scroll">
+		<section class="hero is-fullheight scroll wow fadeInUp" data-wow-offset="40">
 			<div id="contact" class="hero-body">
 				<div class="container">
 					<h1 class="title">

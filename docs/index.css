@@ -118,6 +118,8 @@
 	background-size: 50% 100%;
 	background-repeat: no-repeat;
 	background-position: right; 
+}
+#cool .hero-body{
 	padding-left: 100px;
 }
 #width{
@@ -221,6 +223,7 @@ hr{
 	border-top-right-radius: 5px;
 }
 #aboutMe {
+	margin-top: 1px;
 	border-top: 1px solid #ddd;
 }
 #aboutMe .hero-body{
