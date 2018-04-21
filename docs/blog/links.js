@@ -14,7 +14,7 @@ function loadjscssfile(filename, filetype){
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
  // css
-loadjscssfile("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css", "css")
+loadjscssfile("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css", "css")
 loadjscssfile("../loading.css", "css")
 loadjscssfile("allblog.css", "css")
 
