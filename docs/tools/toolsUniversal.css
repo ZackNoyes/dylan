@@ -28,11 +28,9 @@
 	margin-top: 25px;
 	margin-left: 25px;
 }
-#adRight{
-	right: 0;
-	position: absolute;
-	margin-top: 25px;
-	margin-right: 25px;
+#content{
+	width: 60%;
+	margin-left: 20%;
 }
 
 .textCenter{
@@ -60,10 +58,6 @@ h4{
     height: 100vh;
 }
 
-#content {
-    width: 550px;
-		margin: auto;
-}
 #active{
 		color: white;
 }
